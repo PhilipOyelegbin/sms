@@ -25,6 +25,10 @@ app.use(helmet())
 app.use(cors({origin: ["http://localhost:4000/*", "https://schoolmanagementsystem-api.vercel.app/*"]}))
 
 // Routes
+app.get('/', (req, res) => {
+  res.status(200).sendFile('index.html', {root: path.join(__dirname, 'public')});
+});
+
 app.use("/auth", authRouter);
 app.use("/v1/users", verifyToken, userRouter);
 app.use("/v1/students", verifyToken, studentRouter);
