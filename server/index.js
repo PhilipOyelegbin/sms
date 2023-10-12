@@ -19,7 +19,7 @@ var options = {
 
 // middleware
 app.use(express.json())
-app.use(express.static("public", options))
+app.use(express.static("public"))
 app.use(express.urlencoded({extended: false}))
 app.use(helmet())
 app.use(cors({origin: ["http://localhost:4000/*", "https://schoolmanagementsystem-api.vercel.app/*"]}))
@@ -31,7 +31,8 @@ app.use("/v1/students", verifyToken, studentRouter);
 app.use("/v1/scores", verifyToken, scoreRouter);
 
 app.get("/*", (req, res) => {
-  res.status(404).sendFile(__dirname + "error.html")
+  res.status(404).redirect("error.html")
+  //res.status(404).sendFile(__dirname + "error.html")
 })
 
 const server = () => {
