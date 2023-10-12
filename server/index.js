@@ -12,21 +12,19 @@ const {verifyToken} = require("./src/authentication/auth.middleware")
 
 const app = express()
 
-var options = {
-  extensions: ["html", "htm", "css"],
-  index: false
-}
-
 // middleware
 app.use(express.json())
-app.use(express.static("public"))
+// app.use(express.static("public"))
 app.use(express.urlencoded({extended: false}))
 app.use(helmet())
 app.use(cors({origin: ["http://localhost:4000/*", "https://schoolmanagementsystem-api.vercel.app/*"]}))
 
 // Routes
+// app.get('/', (req, res) => {
+//   res.status(200).sendFile('index.html', {root: path.join(__dirname, 'public')});
+// });
 app.get('/', (req, res) => {
-  res.status(200).sendFile('index.html', {root: path.join(__dirname, 'public')});
+  res.status(200).sendFile(__dirname + "/index.html")
 });
 
 app.use("/auth", authRouter);
@@ -35,8 +33,7 @@ app.use("/v1/students", verifyToken, studentRouter);
 app.use("/v1/scores", verifyToken, scoreRouter);
 
 app.get("/*", (req, res) => {
-//  res.status(404).redirect("error.html")
-  res.status(404).sendFile(__dirname + "/public/error.html")
+  res.status(404).sendFile(__dirname + "/error.html")
 })
 
 const server = () => {

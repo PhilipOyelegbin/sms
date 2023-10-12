@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Error: Not Found</title>
+  <style>
+    *, ::before, ::after {
+      padding: 0;
+      margin: 0;
+      border: none;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 34px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 30px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    h5 {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    p, li {
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    #error {
+      display: flex;
+      flex-flow: column;
+      margin: 20% auto;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #e6e5e7;
+      box-shadow: 2px 2px 8px #8a2be2;
+      width: 80%;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .btn {
+      background-color: #8a2be2;
+      color: #f0f8ff;
+      border-radius: 8px;
+      padding: 12px 20px;
+      text-decoration: none;
+      margin: auto;
+    }
+
+    @media (min-width: 687px) {
+      #error {
+        width: 400px;
+        margin: 50px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="error">
+      <img src="./warning.png" alt="404 error">
+      <h2>404: Not found</h2>
+      <a href="index.html" class="btn">Go Home</a>
+    </section>
+  </main>
+</body>
+</html>

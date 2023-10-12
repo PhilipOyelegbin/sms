@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Management System API</title>
+  <style>
+    *, ::before, ::after {
+      padding: 0;
+      margin: 0;
+      border: none;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      background-color: #8a2be2;
+      color: #f0f8ff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 34px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 30px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    h5 {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    p, li {
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    ul {
+      margin-bottom: 12px;
+    }
+
+    ul li {
+      list-style: inside;
+    }
+
+    footer {
+      background-color: #363537;
+      color: #f0f8ff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: #f0f8ff;
+      font-style: italic;
+    }
+
+    @media (min-width: 687px) {
+      header, main, footer {
+        padding: 20px 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>School Management System API</h1>
+  </header>
+
+  <main>
+    <h3>Routes</h3>
+
+    <section>
+      <h5>User Routes</h5>
+      <ul>
+        <li>Get and post a user: <a href="https://schoolmanagementsystem-api.vercel.app/v1/users">https://schoolmanagementsystem-api.vercel.app/v1/users</a></li>
+        <li>Get, update and delete a user by email: <a href="https://schoolmanagementsystem-api.vercel.app/v1/users/:id">https://schoolmanagementsystem-api.vercel.app/v1/users/:id</a></li>
+        <li>Authenticate a user: <a href="https://schoolmanagementsystem-api.vercel.app/auth/users">https://schoolmanagementsystem-api.vercel.app/auth/users</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h5>Student Routes</h5>
+      <ul>
+        <li>Get and post a student: <a href="https://schoolmanagementsystem-api.vercel.app/v1/students">https://schoolmanagementsystem-api.vercel.app/v1/students</a></li>
+        <li>Get, update and delete a student by email: <a href="https://schoolmanagementsystem-api.vercel.app/v1/students/:id">https://schoolmanagementsystem-api.vercel.app/v1/students/:id</a></li>
+        <li>Authenticate a user: <a href="https://schoolmanagementsystem-api.vercel.app/auth/students">https://schoolmanagementsystem-api.vercel.app/auth/students</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h5>Score Routes</h5>
+      <ul>
+        <li>Get and post a score: <a href="https://schoolmanagementsystem-api.vercel.app/v1/scores">https://schoolmanagementsystem-api.vercel.app/v1/scores</a></li>
+        <li>Get, update and delete a score by id: <a href="https://schoolmanagementsystem-api.vercel.app/v1/scores/:id">https://schoolmanagementsystem-api.vercel.app/v1/scores/:id</a></li>
+        <li>Get all scores regarding a student by student email: <a href="https://schoolmanagementsystem-api.vercel.app/v1/scores/query?students=email">https://schoolmanagementsystem-api.vercel.app/v1/scores/query?students=email</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>created by <b>Philip Oyelegbin</b>, contact: <a href="https://linkedin.com/in/philipoyelegbin" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  </footer>
+</body>
+</html>
