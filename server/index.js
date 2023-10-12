@@ -26,7 +26,7 @@ app.use(cors({origin: ["http://localhost:4000/*", "https://schoolmanagementsyste
 
 // Routes
 app.get('/', (req, res) => {
-  res.status(200).sendFile('index.html', {root: path.join(__dirname, 'public')});
+  res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
 
 app.use("/auth", authRouter);
