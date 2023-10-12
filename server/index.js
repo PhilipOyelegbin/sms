@@ -14,15 +14,11 @@ const app = express()
 
 // middleware
 app.use(express.json())
-// app.use(express.static("public"))
 app.use(express.urlencoded({extended: false}))
 app.use(helmet())
 app.use(cors({origin: ["http://localhost:4000/*", "https://schoolmanagementsystem-api.vercel.app/*"]}))
 
 // Routes
-// app.get('/', (req, res) => {
-//   res.status(200).sendFile('index.html', {root: path.join(__dirname, 'public')});
-// });
 app.get('/', (req, res) => {
   res.status(200).sendFile(__dirname + "/index.html")
 });
