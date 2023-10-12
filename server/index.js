@@ -25,9 +25,9 @@ app.use("/v1/users", verifyToken, userRouter);
 app.use("/v1/students", verifyToken, studentRouter);
 app.use("/v1/scores", verifyToken, scoreRouter);
 
-app.get("/*", (req, res) => {
-  res.status(404).redirect("error.html")
-})
+//app.get("/*", (req, res) => {
+//  res.status(404).send("error.html")
+//})
 
 const server = () => {
   db(process.env.DB_URI)
