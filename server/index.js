@@ -26,7 +26,7 @@ app.use(cors({origin: ["http://localhost:4000/*", "https://schoolmanagementsyste
 
 // Routes
 app.get('/', (req, res) => {
-  res.sendFile('index.html', {root: path.join(__dirname, 'public')});
+  res.status(200).sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
 
 app.use("/auth", authRouter);
@@ -34,10 +34,10 @@ app.use("/v1/users", verifyToken, userRouter);
 app.use("/v1/students", verifyToken, studentRouter);
 app.use("/v1/scores", verifyToken, scoreRouter);
 
-//app.get("/*", (req, res) => {
+app.get("/*", (req, res) => {
 //  res.status(404).redirect("error.html")
-  //res.status(404).sendFile(__dirname + "error.html")
-//})
+  res.status(404).sendFile(__dirname + "/public/error.html")
+})
 
 const server = () => {
   db(process.env.DB_URI)
