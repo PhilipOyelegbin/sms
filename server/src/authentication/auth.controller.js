@@ -1,33 +1,35 @@
-const userModel = require("../users/user.model")
-const studentModel = require("../students/student.model")
-const {verifyUser, createJWT} = require("./auth.service")
+const {verifyUser, verifyStudent} = require("./auth.service")
 
 
-const loginUser = async (userDetails) => {
-  const foundUser = await userModel.findOne({email: userDetails.email}).select("+password")
-  if(!foundUser) {
-    return null
-  } else {
-    const userVerified = verifyUser(userDetails, foundUser)
-    if(userVerified === true) {
-      return createJWT(foundUser)
-    } else {
-      return null
+const loginUser = async(req, res) => {
+  try {
+    const {email, password} = req.body
+    if(!(email && password)) {
+      return res.status(400).send({message: "All fields are required"})
     }
+    const user = await verifyUser(req.body)
+    if(!user) {
+      return res.status(403).send({message: "User authentication failed... input the right details"})
+    }
+    return res.status(200).send({message: "The user has been authenticated", user})
+  } catch (error) {
+    return res.status(500).send({error: error.message})
   }
 }
 
-const loginStudent = async (userDetails) => {
-  const foundStudent = await studentModel.findOne({email: userDetails.email}).select("+password")
-  if(!foundStudent) {
-    return null
-  } else {
-    const userVerified = verifyUser(userDetails, foundStudent)
-    if(userVerified === true) {
-      return createJWT(foundStudent)
-    } else {
-      return null
+const loginStudent = async(req, res) => {
+  try {
+    const {email, password} = req.body
+    if(!(email && password)) {
+      return res.status(400).send({message: "All fields are required"})
     }
+    const student = await verifyStudent(req.body)
+    if(!student) {
+      return res.status(403).send({message: "Student authentication failed... input the right details"})
+    }
+    return res.status(200).send({message: "The student has been authenticated", student})
+  } catch (error) {
+    return res.status(500).send({error: error.message})
   }
 }
 

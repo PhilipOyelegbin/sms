@@ -1,4 +1,6 @@
 const {Schema, model} = require("mongoose")
+const bcrypt = require("bcryptjs")
+
 
 // database schema for users
 const userSchema = new Schema({
@@ -34,24 +36,20 @@ const userSchema = new Schema({
   }
 }, {timestamps: true})
 
-// // password encryption
-// userSchema.pre("save", async(next) => {
-//   if(!this.isModified("password")) {
-//     return next()
-//   }
+// password encryption
+userSchema.pre("save", async function(next) {
+  if(!this.isModified("password")) return next()
 
-//   // encrypt the password before saving
-//   this.password = await bcrypt.hash(this.password, 12)
+  // encrypt the password before saving
+  this.password = await bcrypt.hash(this.password, 16)
+  next()
+})
 
-//   this.confirmPassword = undefined
-//   next()
-// })
-
-// // password comparison for login function
-// userSchema.methods.comparePwd = async(pwd, pwdDB) => {
-//   // compare the password for login
-//   return await bcrypt.compare(pwd, pwdDB)
-// }
+// password comparison for login function
+userSchema.methods.comparePwd = async function(pwd, pwdDB) {
+  // compare the password for login
+  return await bcrypt.compare(pwd, pwdDB)
+}
 
 
 const userModel = model("sms_users", userSchema)

@@ -49,15 +49,15 @@ const getScoreByStudent = async(req, res) => {
 
 const createScore = async(req, res) => {
   try {
-    const {math, english, biology, government, session, student} = req.body
-    if(!(math, english, biology, government, session, student)) {
+    const {student, math, english, biology, government, session, comment} = req.body
+    if(!(student, math, english, biology, government, session, comment)) {
       return res.status(400).send({message: "All fields are required"})
     }
 
     // calculate the grade
     let ReqValue = Object.values(req.body).map(value => value)
     const calGrade = await grader.calculateTotalMarks(req.body)
-      .then(totalMarks => grader.calculateAverageMarks(totalMarks, ReqValue.length-2))
+      .then(totalMarks => grader.calculateAverageMarks(totalMarks, ReqValue.length-3))
       .then(grade=> grader.calculateGrade(grade))
       .catch(err => err)
 

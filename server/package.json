@@ -1,5 +1,5 @@
 {
-  "name": "sms-microservice",
+  "name": "Student Management System API",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,12 +7,14 @@
     "node": "18.x"
   },
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Philip Oyelegbin",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",

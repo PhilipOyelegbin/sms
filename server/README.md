@@ -1,5 +1,5 @@
-# School Management System API
+# Student Management System API
 
 - Created using Express.Js
 
-- Link to the live api https://schoolmanagementsystem-api.vercel.app/
+- Link to the live api https://studentmanagementsystem-api.vercel.app/

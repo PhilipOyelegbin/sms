@@ -1,6 +1,11 @@
 const {Schema, model} = require("mongoose")
 
 const scoreSchema = new Schema({
+  student: {
+    type: Schema.Types.ObjectId,
+    ref: "sms_students",
+    require: [true, "student email is required"],
+  },
   math: {
     type: Number,
     require: [true, "math is required"],
@@ -29,10 +34,9 @@ const scoreSchema = new Schema({
     type: String,
     require: [true, "session is required"],
   },
-  student: {
-    type: Schema.Types.String,
-    ref: "sms_students",
-    require: [true, "student email is required"],
+  comment: {
+    type: String,
+    require: [true, "comment is required"],
   }
 }, {timestamps: true})
 
