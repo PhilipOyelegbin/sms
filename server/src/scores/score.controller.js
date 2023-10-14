@@ -49,16 +49,22 @@ const getScoreByStudent = async(req, res) => {
 
 const createScore = async(req, res) => {
   try {
-    const {student, math, english, biology, government, session, comment} = req.body
-    if(!(student, math, english, biology, government, session, comment)) {
+    const {student, math, english, biology, government, session} = req.body
+    if(!(student, math, english, biology, government, session)) {
       return res.status(400).send({message: "All fields are required"})
     }
 
+    // get all the score
+    let ReqValue = Object.values(req.body).map(value => value).splice(1, 4)
+
+    // calculate the average
+    const getAvg = await grader.calculateTotalMarks(req.body)
+    .then(totalMarks => grader.calculateAverageMarks(totalMarks, ReqValue.length))
+    .catch(err => err)
+
     // calculate the grade
-    let ReqValue = Object.values(req.body).map(value => value)
-    const calGrade = await grader.calculateTotalMarks(req.body)
-      .then(totalMarks => grader.calculateAverageMarks(totalMarks, ReqValue.length-3))
-      .then(grade=> grader.calculateGrade(grade))
+    const getGrade = await grader.calculateGrade(getAvg)
+      .then(grade => grade)
       .catch(err => err)
 
     // find the student if it exist or not
@@ -66,7 +72,7 @@ const createScore = async(req, res) => {
     if(!findStudent) {
       return res.status(404).json({error: "Student does not exist"})
     }
-    await scoreService.createScore({...req.body, grade: calGrade}).then(score =>
+    await scoreService.createScore({...req.body, average: getAvg, grade: getGrade}).then(score =>
       res.status(201).send({message: "New score added successfully", score})
     ).catch(err =>
       res.status(409).send({message: err})
@@ -83,14 +89,25 @@ const updateScore = async(req, res) => {
       return res.status(400).send({message: "The ID is required"})
     }
 
+    const {math, english, biology, government} = req.body
+    if(!(math, english, biology, government)) {
+      return res.status(400).send({message: "All subject fields are required"})
+    }
+
+    // get all the score
+    let ReqValue = Object.values(req.body).map(value => value).splice(0, 3)
+
+    // calculate the average
+    const getAvg = await grader.calculateTotalMarks(req.body)
+    .then(totalMarks => grader.calculateAverageMarks(totalMarks, ReqValue.length))
+    .catch(err => err)
+
     // calculate the grade
-    let ReqValue = Object.values(req.body).map(value => value)
-    const calGrade = await grader.calculateTotalMarks(req.body)
-      .then(totalMarks => grader.calculateAverageMarks(totalMarks, ReqValue.length-2))
-      .then(grade=> marks.calculateGrade(grade))
+    const getGrade = await grader.calculateGrade(getAvg)
+      .then(grade => grade)
       .catch(err => err)
 
-    const modScore = await scoreService.updateScore(id, {...req.body, grade: calGrade})
+    const modScore = await scoreService.updateScore(id, {...req.body, average: getAvg, grade: getGrade})
     if(!modScore) {
       return res.status(404).send({message: "Score not found"})
     }

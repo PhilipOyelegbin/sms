@@ -8,23 +8,27 @@ const scoreSchema = new Schema({
   },
   math: {
     type: Number,
-    require: [true, "math is required"],
+    require: [true, "math score is required"],
     default: 0
   },
   english: {
     type: Number,
-    require: [true, "english is required"],
+    require: [true, "english score is required"],
     default: 0
   },
   biology: {
     type: Number,
-    require: [true, "biology is required"],
+    require: [true, "biology score is required"],
     default: 0
   },
   government: {
     type: Number,
-    require: [true, "government is required"],
+    require: [true, "government score is required"],
     default: 0
+  },
+  average: {
+    type: Number,
+    require: [true, "average score is required"],
   },
   grade: {
     type: String,
@@ -36,7 +40,6 @@ const scoreSchema = new Schema({
   },
   comment: {
     type: String,
-    require: [true, "comment is required"],
   }
 }, {timestamps: true})
 
