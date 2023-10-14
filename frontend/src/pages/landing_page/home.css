@@ -1,0 +1,50 @@
+@import url('../../color.css');
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../assets/home_bg.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  width: 500px;
+}
+
+.column {
+  width: 280px;
+  padding: 20px;
+  background: var(--gray);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.btn-login {
+  display: inline-block;
+  background-color: var(--success-btn);
+  color: var(--white);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: var(--success-btn-hover);
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-flow: column;
+    align-items: center;
+  }
+}
