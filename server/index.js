@@ -8,6 +8,7 @@ const authRouter = require("./src/authentication")
 const userRouter = require("./src/users")
 const studentRouter = require("./src/students")
 const scoreRouter = require("./src/scores")
+const sanctionRouter = require("./src/sanctions")
 const {verifyToken} = require("./src/authentication/auth.middleware")
 
 const app = express()
@@ -27,6 +28,7 @@ app.use("/auth", authRouter);
 app.use("/v1/users", verifyToken, userRouter);
 app.use("/v1/students", verifyToken, studentRouter);
 app.use("/v1/scores", verifyToken, scoreRouter);
+app.use("/v1/sanctions", verifyToken, sanctionRouter);
 
 app.get("/*", (req, res) => {
   res.status(404).sendFile(__dirname + "/error.html")

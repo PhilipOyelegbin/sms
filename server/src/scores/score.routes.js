@@ -1,5 +1,12 @@
 const {Router} = require("express")
-const {getAllScore, getOneScore, getScoreByStudent, createScore, updateScore, deleteScore} = require("./score.controller")
+const {
+  getAllScore,
+  getOneScore,
+  getScoreByStudent,
+  createScore,
+  updateScore,
+  deleteScore
+} = require("./score.controller")
 const {restrict} = require("../authentication/auth.middleware")
 
 
