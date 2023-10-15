@@ -16,11 +16,11 @@ const app = express()
 const corsOptions = {
   // origin: [
     //   "http://localhost:5173",
-    //   "http://localhost:4000/*",
-    //   "https://studentsmanagementsystem.netlify.app/*",
-  //   "https://studentmanagementsystem-api.vercel.app/*"
+    //   "http://localhost:4000",
+    //   "https://studentsmanagementsystem.netlify.app",
+  //   "https://studentmanagementsystem-api.vercel.app"
   // ],
-  origin: 'http://localhost:5173',
+  origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204
@@ -31,7 +31,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(helmet())
 app.use(cors(corsOptions))
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type');
   res.setHeader('Access-Control-Allow-Credentials', true);
