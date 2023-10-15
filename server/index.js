@@ -14,12 +14,13 @@ const {verifyToken} = require("./src/authentication/auth.middleware")
 const app = express()
 
 const corsOptions = {
-  origin: [
-    "http://localhost:4000/*",
-    "http://localhost:5173/*",
-    "https://studentmanagementsystem-api.vercel.app/*",
-    "https://studentsmanagementsystem.netlify.app/*"
-  ],
+  // origin: [
+    //   "http://localhost:5173",
+    //   "http://localhost:4000/*",
+    //   "https://studentsmanagementsystem.netlify.app/*",
+  //   "https://studentmanagementsystem-api.vercel.app/*"
+  // ],
+  origin: 'http://localhost:5173',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204
