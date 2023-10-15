@@ -13,18 +13,22 @@ const {verifyToken} = require("./src/authentication/auth.middleware")
 
 const app = express()
 
-// middleware
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use(helmet())
-app.use(cors({
+const corsOptions = {
   origin: [
     "http://localhost:4000/*",
     "http://localhost:5173/*",
     "https://studentmanagementsystem-api.vercel.app/*",
     "https://studentsmanagementsystem.netlify.app/*"
-  ]
-}))
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+}
+// middleware
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+app.use(helmet())
+app.use(cors(corsOptions))
 
 // Routes
 app.get('/', (req, res) => {
