@@ -1,4 +1,4 @@
-@import url("../../color.css");
+@import url("../../variables.css");
 
 .login-page {
   display: flex;
@@ -30,7 +30,7 @@
 
 .left-column {
   flex: 1;
-  padding: 40px;
+  padding: 20px;
   text-align: center;
 }
 
@@ -51,7 +51,7 @@ input[type="password"] {
   padding: 8px;
   font-size: 16px;
   border: 1px solid var(--gray);
-  border-radius: 5px;
+  border-radius: 8px;
   margin-bottom: 10px;
 }
 
@@ -59,7 +59,7 @@ button {
   background-color: var(--success-btn);
   color: var(--white);
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -78,5 +78,9 @@ button:hover {
   .right-column {
     display: block;
     flex: 1;
+  }
+
+  .left-column {
+    padding: 40px;
   }
 }
