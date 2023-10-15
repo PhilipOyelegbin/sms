@@ -13,31 +13,31 @@ const {verifyToken} = require("./src/authentication/auth.middleware")
 
 const app = express()
 
-const corsOptions = {
-  // origin: [
-    //   "http://localhost:5173",
-    //   "http://localhost:4000",
-    //   "https://studentsmanagementsystem.netlify.app",
-  //   "https://studentmanagementsystem-api.vercel.app"
-  // ],
-  origin: '*',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204
-}
+// const corsOptions = {
+//   // origin: [
+//     //   "http://localhost:5173",
+//     //   "http://localhost:4000",
+//     //   "https://studentsmanagementsystem.netlify.app",
+//   //   "https://studentmanagementsystem-api.vercel.app"
+//   // ],
+//   origin: '*',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+//   optionsSuccessStatus: 204
+// }
 // middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(helmet())
-app.use(cors(corsOptions))
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Expose-Headers', 'Authorization');
-  next();
-});
+app.use(cors())
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+//   res.setHeader('Access-Control-Expose-Headers', 'Authorization');
+//   next();
+// });
 
 // Routes
 app.get('/', (req, res) => {
