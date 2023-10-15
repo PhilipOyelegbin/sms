@@ -20,7 +20,7 @@ const corsOptions = {
     //   "https://studentsmanagementsystem.netlify.app/*",
   //   "https://studentmanagementsystem-api.vercel.app/*"
   // ],
-  origin: 'http://localhost:5173/*',
+  origin: 'http://localhost:5173',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204
