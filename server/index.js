@@ -17,7 +17,14 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(helmet())
-app.use(cors({origin: ["http://localhost:4000/*", "https://schoolmanagementsystem-api.vercel.app/*"]}))
+app.use(cors({
+  origin: [
+    "http://localhost:4000/*",
+    "http://localhost:5173/*",
+    "https://studentmanagementsystem-api.vercel.app/*",
+    "https://studentsmanagementsystem.netlify.app/*"
+  ]
+}))
 
 // Routes
 app.get('/', (req, res) => {
