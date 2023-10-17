@@ -52,8 +52,8 @@ app.get("/*", (req, res) => {
   res.status(404).sendFile(__dirname + "/error.html")
 })
 
-const server = () => {
-  db(process.env.DB_URI)
+const server = async() => {
+  await db(process.env.DB_URI)
   app.listen(process.env.API_PORT, () => {
     console.log(`Server is listening on http://localhost:${process.env.API_PORT}`)
   })
