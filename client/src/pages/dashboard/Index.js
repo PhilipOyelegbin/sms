@@ -1,21 +1,24 @@
-// import { Outlet, ScrollRestoration } from 'react-router-dom';
-// import Header from '../components/Header'
-// import Footer from '../components/Footer'
+import { ScrollRestoration } from 'react-router-dom';
+import Sidebar from "../../components/Sidebar";
+import Footer from "../../components/Footer";
+import "./index.css"
 
-function Index() {
+
+function Index({children}) {
   return (
     <>
-      <h1>Dashboard</h1>
-      {/* <Header/>
-      <Outlet/>
+      <Sidebar/>
+      <div className="main-content">
+        {children}
+      </div>
       <Footer/>
       <ScrollRestoration
         getKey={(location, matches) => {
           return location.pathname;
         }}
-      /> */}
+      />
     </>
   )
 }
 
-export default Index
+export default Index;

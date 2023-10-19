@@ -9,7 +9,8 @@ const AdminLogin = lazy(() => import('./pages/login_page/AdminLogin'));
 const UserLogin = lazy(() => import('./pages/login_page/UserLogin'));
 const AdminRegistration = lazy(() => import('./pages/registration_page/AdminRegistration'));
 const UserRegistration = lazy(() => import('./pages/registration_page/UserRegistration'));
-const Dashboard = lazy(() => import('./pages/dashboard/Index'));
+const Index = lazy(() => import('./pages/dashboard/Index'));
+const Dashboard = lazy(() => import('./pages/dashboard/Dashboard'));
 
 function App() {
   const router = createBrowserRouter(
@@ -21,7 +22,9 @@ function App() {
         <Route path='register/admin' element={<AdminRegistration/>}/>
         <Route path='register/student' element={<UserRegistration/>}/>
         <Route element={<ProtectedRoutes/>}>
-          <Route path='dashboard' element={<Dashboard/>}/>
+          <Route path='dashboard' element={<Index/>}>
+            <Route element={<Dashboard/>}/>
+          </Route>
         </Route>
       </Route>
     )

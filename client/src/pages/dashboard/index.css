@@ -1,0 +1,82 @@
+@import url("../../variables.css");
+
+.sidebar {
+  background: var(--secondary-color);
+  width: 50%;
+  height: 100vh;
+  color: var(--white);
+  padding: 80px 10px;
+  position: fixed;
+  transition: all ease-in-out 300ms;
+  z-index: 30;
+}
+
+.sidebar-hide {
+ left: -40%;
+}
+
+.sidebar-header {
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-btn {
+  font-size: 30px;
+  cursor: pointer;
+  transition: all ease-in-out 300ms;
+}
+
+.toggle-btn-invisible {
+  display: none;
+}
+
+.sidebar-content {
+  border-top: 2px solid var(--gray);
+  padding-top: 40px;
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+  width: fit-content;
+}
+
+.sidebar-content > a {
+  text-decoration: none;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.main-content {
+  width: 90%;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+}
+
+
+@media (min-width: 768px) {
+  .sidebar {
+    width: 25%;
+  }
+
+  .sidebar-hide {
+   left: -20%;
+  }
+
+  footer {
+    padding: 20px 80px;
+  }
+}
