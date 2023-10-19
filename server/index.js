@@ -16,7 +16,7 @@ const app = express()
 
 
 // Allow only specific origins (replace these with your frontend URLs)
-const allowedOrigins = ["http://localhost:3000", 'https://studentmanagementsystem-app.vercel.app/'];
+const allowedOrigins = ["http://localhost:3000", 'https://https://sms-api-4mzf.onrender.com'];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -49,7 +49,7 @@ app.use("/v1/students", verifyToken, studentRouter);
 app.use("/v1/scores", verifyToken, scoreRouter);
 app.use("/v1/sanctions", verifyToken, sanctionRouter);
 
-app.get("/*", (req, res) => {
+app.use((req, res) => {
   res.status(404).sendFile(__dirname + "/error.html")
 })
 
