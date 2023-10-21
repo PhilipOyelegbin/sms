@@ -22,7 +22,7 @@ function UserLogin() {
     try {
       e.preventDefault()
       setIsLoading(true)
-      const result = await axios.post(process.env.REACT_APP_STUDENT_AUTH_URL, formData)
+      const result = await axios.post(import.meta.env.VITE_APP_STUDENT_AUTH_URL, formData)
       setFormData({email: "", password: ""})
       toast.success("Login successfully...")
       sessionStorage.setItem("token", result.data.user)
