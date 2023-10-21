@@ -16,7 +16,7 @@ const app = express()
 
 
 // Allow only specific origins (replace these with your frontend URLs)
-const allowedOrigins = ["http://localhost:3000", 'https://https://sms-api-4mzf.onrender.com'];
+const allowedOrigins = ["http://localhost:4000", 'https://studentsmanagementsystem.netlify.app'];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -28,14 +28,14 @@ const corsOptions = {
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
-  optionsSuccessStatus: 204
+  // optionsSuccessStatus: 204
 };
 
 // middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(helmet())
-app.use(cors())
+app.use(cors(corsOptions))
 
 
 // Routes
