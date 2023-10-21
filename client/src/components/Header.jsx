@@ -4,11 +4,10 @@ import axios from 'axios'
 
 function Header({user, token}) {
   const [profile, setProfile] = useState({})
-  console.log(user)
 
   const getUser = async(user) => {
     let url =(`${import.meta.env.VITE_APP_ADMIN_API_URL}/${user?.email}` || `${import.meta.env.VITE_APP_STUDENT_API_URL}/${user?.email}`)
-    console.log(url)
+
     await axios.get(url, {headers: {
       Authorization: `Bearer ${token}`}
     })
@@ -17,7 +16,9 @@ function Header({user, token}) {
   }
 
   useEffect(() => {
-    getUser(user)
+    setTimeout(() => {
+      getUser(user)
+    }, 1000);
   }, [user])
 
   return (

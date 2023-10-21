@@ -21,10 +21,12 @@ function App() {
   const token = sessionStorage.getItem('token');
 
   useEffect(() => {
-    if (token) {
-      const decoded = jwt_decode(token);
-      setUser(decoded);
-    }
+    setTimeout(() => {
+      if (token) {
+        const decoded = jwt_decode(token);
+        setUser(decoded);
+      }
+    }, 3000);
   }, [token]);
 
   const router = createBrowserRouter(
