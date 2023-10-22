@@ -7,7 +7,7 @@ import user_image from '../../assets/user.jpg'
 import "./login.css"
 
 
-function UserLogin() {
+function StudentLogin() {
   const [formData, setFormData] = useState({email: "", password: ""})
   const [isLoading, setIsLoading] = useState(false)
 
@@ -50,4 +50,4 @@ function UserLogin() {
   )
 }
 
-export default UserLogin
+export default StudentLogin

@@ -9,9 +9,9 @@ import Index from './pages/dashboard/Index';
 
 const Home = lazy(() => import('./pages/landing_page/Home'));
 const AdminLogin = lazy(() => import('./pages/login_page/AdminLogin'));
-const UserLogin = lazy(() => import('./pages/login_page/UserLogin'));
+const StudentLogin = lazy(() => import('./pages/login_page/StudentLogin'));
 const AdminRegistration = lazy(() => import('./pages/registration_page/AdminRegistration'));
-const UserRegistration = lazy(() => import('./pages/registration_page/UserRegistration'));
+const StudentRegistration = lazy(() => import('./pages/registration_page/StudentRegistration'));
 const Dashboard = lazy(() => import('./pages/dashboard/Dashboard'));
 const Profile = lazy(() => import('./pages/dashboard/Profile'));
 
@@ -34,9 +34,9 @@ function App() {
       <Route path='/'>
         <Route index element={<Home/>}/>
         <Route path='login/admin' element={<AdminLogin/>}/>
-        <Route path='login/student' element={<UserLogin/>}/>
+        <Route path='login/student' element={<StudentLogin/>}/>
         <Route path='register/admin' element={<AdminRegistration/>}/>
-        <Route path='register/student' element={<UserRegistration/>}/>
+        <Route path='register/student' element={<StudentRegistration/>}/>
         <Route element={<ProtectedRoutes/>}>
           <Route path='dashboard' element={<Index user={user} token={token}/>}>
             <Route index element={<Dashboard user={user} token={token}/>}/>

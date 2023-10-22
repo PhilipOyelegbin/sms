@@ -14,4 +14,6 @@ function LoginForm({formData, isLoading, handleChange, handleSubmit}) {
   )
 }
 
+LoginForm.propTypes = {formData: null, isLoading: null, handleChange: Function, handleSubmit: Function}
+
 export default LoginForm

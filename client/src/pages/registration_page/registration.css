@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   color: var(--primary-color);
 }
 
@@ -13,7 +12,7 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
-  max-width: 800px;
+  max-width: 900px;
   width: 80%;
 }
 
@@ -35,26 +34,36 @@
   text-align: center;
 }
 
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
 .form-group {
-  margin-bottom: 15px;
   text-align: left;
 }
 
 label {
   display: block;
   font-weight: bold;
-  margin-bottom: 4px;
 }
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="tel"],
+input[type="date"],
+input[type="password"],
+select {
   width: 100%;
   padding: 8px;
   font-size: 16px;
   border: 1px solid var(--gray);
   border-radius: 8px;
   margin-bottom: 10px;
+  outline: none;
 }
 
 button {
@@ -66,6 +75,8 @@ button {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: fit-content;
+  height: fit-content;
 }
 
 button:hover {
@@ -73,6 +84,10 @@ button:hover {
 }
 
 @media (min-width: 768px) {
+  .registration-page {
+    height: 100vh;
+  }
+
   .login-container {
     width: 100%;
   }
@@ -80,5 +95,10 @@ button:hover {
   .right-column {
     display: block;
     flex: 1;
+  }
+
+  .form-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
