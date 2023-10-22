@@ -12,8 +12,8 @@ import {
 
 function Dashboard() {
   const cardDetails = [
-    {icon: <FaRegIdCard className="card-icon"/>, url: "/register/admin", name: "New Admin"},
-    {icon: <FaRegIdBadge className="card-icon"/>, url: "/register/student", name: "New Student"},
+    {icon: <FaRegIdCard className="card-icon"/>, url: "register/admin", name: "New Admin"},
+    {icon: <FaRegIdBadge className="card-icon"/>, url: "register/student", name: "New Student"},
     {icon: <FaChalkboardTeacher className="card-icon"/>, url: "score/create", name: "New Score"},
     {icon: <FaChartPie className="card-icon"/>, url: "score/view", name: "My Scores"},
     {icon: <FaBookOpen className="card-icon"/>, url: "sanction/create", name: "New Sanction"},
