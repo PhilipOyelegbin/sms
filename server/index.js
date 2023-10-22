@@ -16,7 +16,7 @@ const app = express()
 
 
 // Allow only specific origins (replace these with your frontend URLs)
-const allowedOrigins = ["http://localhost:4000", 'https://studentsmanagementsystem.netlify.app'];
+const allowedOrigins = ["http://localhost:5173", "http://localhost:3000", 'https://studentsmanagementsystem.netlify.app'];
 
 const corsOptions = {
   origin: function (origin, callback) {
