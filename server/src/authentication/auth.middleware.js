@@ -1,6 +1,5 @@
-//import jsonwebtoken and config
 const jwt = require("jsonwebtoken")
-const userService = require("../users/user.service")
+const staffService = require("../staffs/staff.service")
 const studentService = require("../students/student.service")
 require("dotenv").config()
 
@@ -14,13 +13,13 @@ const verifyToken = async(req, res, next) => {
     const token = authHeader.split(" ")[1]
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-    // check if the user still exist on the database after token has been generated
-    const user = await userService.getOneUser(decoded.email)
+    // check if the staff or student still exist on the database after token has been generated
+    const staff = await staffService.getOneStaff(decoded.email)
     const student = await studentService.getOneStudent(decoded.email)
-    if(!(user || student)) {
+    if(!(staff || student)) {
       return res.status(401).send({message: "User with the token does not exist"})
     }
-    req.user = (user || student)
+    req.user = (staff || student)
   } catch (error) {
     return res.status(403).send({error: "Invalid token", error})
   }

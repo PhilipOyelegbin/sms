@@ -1,10 +1,10 @@
 const {Router} = require("express")
-const {loginUser, loginStudent} = require("./auth.controller")
+const {loginStaff, loginStudent} = require("./auth.controller")
 
 
 const router = Router()
 
-router.post("/users", loginUser)
+router.post("/staffs", loginStaff)
 
 router.post("/students", loginStudent)
 

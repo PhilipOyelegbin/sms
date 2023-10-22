@@ -6,7 +6,7 @@ require("dotenv").config()
 
 const db = require("./src/config/db")
 const authRouter = require("./src/authentication")
-const userRouter = require("./src/users")
+const staffRouter = require("./src/staffs")
 const studentRouter = require("./src/students")
 const scoreRouter = require("./src/scores")
 const sanctionRouter = require("./src/sanctions")
@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/v1/users", verifyToken, userRouter);
+app.use("/v1/staffs", verifyToken, staffRouter);
 app.use("/v1/students", verifyToken, studentRouter);
 app.use("/v1/scores", verifyToken, scoreRouter);
 app.use("/v1/sanctions", verifyToken, sanctionRouter);

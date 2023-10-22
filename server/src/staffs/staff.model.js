@@ -2,8 +2,8 @@ const {Schema, model} = require("mongoose")
 const bcrypt = require("bcryptjs")
 
 
-// database schema for users
-const userSchema = new Schema({
+// database schema for staff
+const staffSchema = new Schema({
   first_name: {
     type: String,
     require: [true, "first name is required"],
@@ -20,6 +20,19 @@ const userSchema = new Schema({
     unique: [true, "email is unique"],
     index: true
   },
+  phone_number: {
+    type: String,
+    require: [true, "phone number is required"],
+  },
+  gender: {
+    type: String,
+    enum: {values: ["Male", "Female", "Others"], message: "{VALUE} is not supported"},
+    require: [true, "gender is required"],
+  },
+  date_of_birth: {
+    type: Date,
+    require: [true, "date oof birth is required"],
+  },
   role: {
     type: String,
     enum: {values: ["Admin", "Teacher"], message: "{VALUE} is not supported"},
@@ -27,6 +40,10 @@ const userSchema = new Schema({
   },
   subject: {
     type: Array,
+  },
+  home_address: {
+    type: String,
+    require: [true, "home address is required"],
   },
   password: {
     type: String,
@@ -37,7 +54,7 @@ const userSchema = new Schema({
 }, {timestamps: true})
 
 // password encryption
-userSchema.pre("save", async function(next) {
+staffSchema.pre("save", async function(next) {
   if(!this.isModified("password")) return next()
 
   // encrypt the password before saving
@@ -46,12 +63,12 @@ userSchema.pre("save", async function(next) {
 })
 
 // password comparison for login function
-userSchema.methods.comparePwd = async function(pwd, pwdDB) {
+staffSchema.methods.comparePwd = async function(pwd, pwdDB) {
   // compare the password for login
   return await bcrypt.compare(pwd, pwdDB)
 }
 
 
-const userModel = model("sms_users", userSchema)
+const staffModel = model("sms_staffs", staffSchema)
 
-module.exports = userModel
+module.exports = staffModel

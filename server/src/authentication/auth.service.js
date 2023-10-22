@@ -1,21 +1,21 @@
 const jwt = require("jsonwebtoken")
-const userModel = require("../users/user.model")
+const staffModel = require("../staffs/staff.model")
 const studentModel = require("../students/student.model")
 require("dotenv").config()
 
 
-async function verifyUser(userDetails){
-  const foundUser = await userModel.findOne({email: userDetails.email}).select("+password")
-  if(!(foundUser && (await foundUser.comparePwd(userDetails.password, foundUser.password)))) {
+async function verifyStaff(staffDetails){
+  const foundStaff = await staffModel.findOne({email: staffDetails.email}).select("+password")
+  if(!(foundStaff && (await foundStaff.comparePwd(staffDetails.password, foundStaff.password)))) {
     return false
   } else {
-    return createJWT(foundUser)
+    return createJWT(foundStaff)
   }
 }
 
-async function verifyStudent(userDetails){
-  const foundStudent = await studentModel.findOne({email: userDetails.email}).select("+password")
-  if(!(foundStudent && (await foundStudent.comparePwd(userDetails.password, foundStudent.password)))) {
+async function verifyStudent(studentDetails){
+  const foundStudent = await studentModel.findOne({email: studentDetails.email}).select("+password")
+  if(!(foundStudent && (await foundStudent.comparePwd(studentDetails.password, foundStudent.password)))) {
     return false
   } else {
     return createJWT(foundStudent)
@@ -24,6 +24,7 @@ async function verifyStudent(userDetails){
 
 function createJWT(foundData) {
   const payload = {
+    id: foundData._id,
     role: foundData.role,
     email: foundData.email,
   }
@@ -36,6 +37,6 @@ function createJWT(foundData) {
 
 
 module.exports = {
-  verifyUser,
+  verifyStaff,
   verifyStudent
 }
