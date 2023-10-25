@@ -11,9 +11,9 @@ const ProtectedRoutes = () => {
   }
   if(time > expTime) {
     sessionStorage.clear()
+    return <Navigate to={"/"}/>
   }
 
-  console.log(time, expTime)
   return token !== null ? <Outlet/> : <Navigate to='/'/>;
 }
 

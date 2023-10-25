@@ -17,7 +17,7 @@ function Dashboard() {
     {icon: <FaChalkboardTeacher className="card-icon"/>, url: "score/create", name: "New Score"},
     {icon: <FaChartPie className="card-icon"/>, url: "score/view", name: "My Scores"},
     {icon: <FaBookOpen className="card-icon"/>, url: "sanction/create", name: "New Sanction"},
-    {icon: <FaRegEye className="card-icon"/>, url: "sanction/student", name: "My Sanction"},
+    {icon: <FaRegEye className="card-icon"/>, url: "sanction/view/:id", name: "My Sanction"},
     {icon: <FaBinoculars className="card-icon"/>, url: "sanction/view", name: "All Sanction"},
   ]
 

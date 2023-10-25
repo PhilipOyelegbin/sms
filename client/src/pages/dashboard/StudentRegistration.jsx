@@ -22,16 +22,16 @@ function StudentRegistration() {
     try {
       e.preventDefault()
       setIsLoading(true)
-      const result = await axios.post(import.meta.env.VITE_APP_STUDENT_API_URL, formData)
+      const result = await axios.post(import.meta.env.VITE_APP_STUDENT_API_URL, formData, {
+        headers: {Authorization: `Bearer ${sessionStorage.getItem("token")}`}
+      })
       setFormData({
         first_name: "", last_name: "", email: "", class: "", gender: "", date_of_birth: "", blood_group: "", medical_information: "", disabilities: "", guardian_name: "", relationship: "", guardian_email: "", guardian_phone_number: "", guardian_address: "", emergency_name: "", emergency_phone_number: "", emergency_address: "", password: ""
       })
-      toast.success("Account created successfully...")
-      sessionStorage.setItem("token", result.data.user)
+      toast.success(result.data?.message)
       navigate("/dashboard")
     } catch (error) {
-      console.log(error)
-      error.message && toast.error("Invalid email or password!")
+      error.message && toast.error("Unable to create new student, try later...")
     } finally {
       setIsLoading(false)
     }

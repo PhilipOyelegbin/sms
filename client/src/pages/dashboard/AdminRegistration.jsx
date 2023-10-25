@@ -6,10 +6,10 @@ import "./registration.css"
 
 
 function AdminRegistration() {
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     first_name: "", last_name: "", email: "", phone_number: "", gender: "", date_of_birth: "", role: "", subject: "", home_address: "", password: ""
   })
-  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -22,16 +22,16 @@ function AdminRegistration() {
     try {
       e.preventDefault()
       setIsLoading(true)
-      const result = await axios.post(import.meta.env.VITE_APP_ADMIN_API_URL, formData)
+      const result = await axios.post(import.meta.env.VITE_APP_ADMIN_API_URL, formData, {
+        headers: {Authorization: `Bearer ${sessionStorage.getItem("token")}`}
+      })
       setFormData({
         first_name: "", last_name: "", email: "", phone_number: "", gender: "", date_of_birth: "", role: "", subject: "", home_address: "", password: ""
       })
-      toast.success("Account created successfully...")
-      sessionStorage.setItem("token", result.data.user)
+      toast.success(result.data?.message)
       navigate("/dashboard")
     } catch (error) {
-      console.log(error)
-      error.message && toast.error("Invalid email or password!")
+      error.message && toast.error("Unable to create new staff, try later...")
     } finally {
       setIsLoading(false)
     }

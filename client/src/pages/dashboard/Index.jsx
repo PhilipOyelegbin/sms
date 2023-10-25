@@ -1,12 +1,11 @@
+import { useEffect, useState } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
-// import { useQuery } from '@tanstack/react-query'
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 import Header from '../../components/Header';
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
 import "./index.css"
-import { useEffect, useState } from 'react';
 
 
 function Index() {
@@ -29,11 +28,6 @@ function Index() {
     .then(resp => setData(resp.data.staff))
     .catch(err => err)
   }
-
-  // const {data, isLoading, error} = useQuery({
-  //   queryKey: ["users"],
-  //   queryFn: () => getUser()
-  // })
 
   useEffect(() => {
     getUser()

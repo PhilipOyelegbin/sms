@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import jwt_decode from 'jwt-decode'
 import axios from "axios";
+
 
 function Profile() {
   const [data, setData] = useState(null)
@@ -20,7 +22,7 @@ function Profile() {
       Authorization: `Bearer ${token}`}
     })
     .then(resp => setData(resp.data.staff))
-    .catch(err => err)
+    .catch(err => toast.error(err.message))
   }
 
   useEffect(() => {
@@ -44,15 +46,15 @@ function Profile() {
         </div>
         <div className='profile-content'>
           <p>Phone number</p>
-          <h3>{data?.email}</h3>
+          <h3>{data?.phone_number}</h3>
         </div>
         <div className='profile-content'>
           <p>Gender</p>
-          <h3>{data?.email}</h3>
+          <h3>{data?.gender}</h3>
         </div>
         <div className='profile-content'>
           <p>Date of birth</p>
-          <h3>{data?.email}</h3>
+          <h3>{data?.date_of_birth}</h3>
         </div>
         <div className='profile-content'>
           <p>Subjects</p>
@@ -60,7 +62,7 @@ function Profile() {
         </div>
         <div className='profile-content'>
           <p>Home address</p>
-          <h3>{data?.email}</h3>
+          <h3>{data?.home_address}</h3>
         </div>
       </section>
     )

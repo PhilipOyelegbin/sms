@@ -8,8 +8,8 @@ import "./login.css"
 
 
 function AdminLogin() {
-  const [formData, setFormData] = useState({email: "", password: ""})
   const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({email: "", password: ""})
 
   const handleChange = (e) => {
     const {name, value} = e.target
