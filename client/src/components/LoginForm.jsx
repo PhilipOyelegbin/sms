@@ -1,3 +1,5 @@
+import { FaCircleNotch } from "react-icons/fa"
+
 function LoginForm({formData, isLoading, handleChange, handleSubmit}) {
   return (
     <form onSubmit={handleSubmit} autoComplete='off'>
@@ -9,7 +11,7 @@ function LoginForm({formData, isLoading, handleChange, handleSubmit}) {
         <label htmlFor="password">Password:</label>
         <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} minLength="6"  placeholder="Enter your password" required/>
       </div>
-      <button type="submit" className="success-btn">{isLoading ? "Loading" : "Login"}</button>
+      <button type="submit" className="success-btn">{isLoading ? <FaCircleNotch/> : "Login"}</button>
     </form>
   )
 }

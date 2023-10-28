@@ -10,7 +10,7 @@ function Home() {
           <Link to="/login/student" className='success-btn'>Login</Link>
         </div>
         <div className="column">
-          <h2>Admin Login</h2>
+          <h2>Staff Login</h2>
           <Link to="/login/admin" className='success-btn'>Login</Link>
         </div>
       </div>

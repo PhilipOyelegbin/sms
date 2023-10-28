@@ -37,8 +37,10 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="date"],
+input[type="time"],
 input[type="password"],
-select {
+select,
+textarea {
   width: 100%;
   padding: 8px;
   font-size: 16px;
@@ -46,6 +48,7 @@ select {
   border-radius: 8px;
   margin-bottom: 10px;
   outline: none;
+  resize: none;
 }
 
 

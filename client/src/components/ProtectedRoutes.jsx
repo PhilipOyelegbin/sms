@@ -14,6 +14,8 @@ const ProtectedRoutes = () => {
     return <Navigate to={"/"}/>
   }
 
+  console.log(expTime, time)
+
   return token !== null ? <Outlet/> : <Navigate to='/'/>;
 }
 

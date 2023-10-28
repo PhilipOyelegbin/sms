@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { FaCircleNotch } from 'react-icons/fa'
 import axios from 'axios'
-import "./registration.css"
+import "../registration.css"
 
-function UpdateStudent() {
-  const {id} = useParams()
-  const token = sessionStorage.getItem('token');
-  const [data, setData] = useState(null)
+
+function StudentRegistration() {
   const [formData, setFormData] = useState({
-    first_name: data?.first_name, last_name: data?.last_name, email: data?.email, class: data?.class, gender: data?.gender, date_of_birth: data?.date_of_birth, blood_group: data?.blood_group, medical_information: data?.medical_information, disabilities: data?.disabilities, guardian_name: data?.guardian_name, relationship: data?.relationship, guardian_email: data?.guardian_email, guardian_phone_number: data?.guardian_phone_number, guardian_address: data?.guardian_address, emergency_name: data?.emergency_name, emergency_phone_number: data?.emergency_phone_number, emergency_address: data?.emergency_address, password: ""
+    first_name: "", last_name: "", email: "", class: "", gender: "", date_of_birth: "", blood_group: "", medical_information: "", disabilities: "", guardian_name: "", relationship: "", guardian_email: "", guardian_phone_number: "", guardian_address: "", emergency_name: "", emergency_phone_number: "", emergency_address: "", password: ""
   })
   const [isLoading, setIsLoading] = useState(false)
-  console.log(formData)
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -25,7 +23,7 @@ function UpdateStudent() {
     try {
       e.preventDefault()
       setIsLoading(true)
-      const result = await axios.patch(`${import.meta.env.VITE_APP_STUDENT_API_URL}/${id}`, formData, {
+      const result = await axios.post(import.meta.env.VITE_APP_STUDENT_API_URL, formData, {
         headers: {Authorization: `Bearer ${sessionStorage.getItem("token")}`}
       })
       setFormData({
@@ -34,26 +32,16 @@ function UpdateStudent() {
       toast.success(result.data?.message)
       navigate("/dashboard")
     } catch (error) {
-      error.message && toast.error("Unable to update the student, try later...")
+      error.message && toast.error("Unable to create new student, try later...")
     } finally {
       setIsLoading(false)
     }
   }
 
-  useEffect(() => {
-    let url =`${import.meta.env.VITE_APP_STUDENT_API_URL}/${id}`
-
-    axios.get(url, {headers: {
-      Authorization: `Bearer ${token}`}
-    })
-    .then(resp => setData(resp.data.student))
-    .catch(err => err && toast.error("Unable to load data, try again later"))
-  }, [token, id])
-
   return (
     <article className="registration-page">
       <div className="registration-container">
-        <h2>Update Student with email: {id}</h2>
+        <h2>Create New Student</h2>
         <form autoComplete='off'>
           <div className='form-container'>
             <div className="form-group">
@@ -151,11 +139,11 @@ function UpdateStudent() {
               <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} minLength={6} placeholder="xxxxxx" required/>
             </div>
           </div>
-          <button type="submit" className='success-btn' onClick={handleSubmit}>{isLoading ? "Loading" : "Save"}</button>
+          <button type="submit" className='success-btn' onClick={handleSubmit}>{isLoading ? <FaCircleNotch/> : "Register"}</button>
         </form>
       </div>
     </article>
   )
 }
 
-export default UpdateStudent
+export default StudentRegistration

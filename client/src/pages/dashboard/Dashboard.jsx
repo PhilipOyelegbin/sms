@@ -35,7 +35,12 @@ function Dashboard() {
           <DashboardCard
             icon={<FaRegIdCard className="card-icon"/>}
             url="register/admin"
-            name="New Admin"
+            name="New Staff"
+          />
+          <DashboardCard
+            icon={<FaUsers className="card-icon"/>}
+            url="staff/view"
+            name="Staffs"
           />
           <DashboardCard
             icon={<FaRegIdBadge className="card-icon"/>}

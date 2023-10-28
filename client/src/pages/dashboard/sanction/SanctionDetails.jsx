@@ -10,16 +10,6 @@ function SanctionDetails() {
   const token = sessionStorage.getItem('token');
   const [data, setData] = useState(null)
 
-  const getSanctions = async() => {
-    let url =`${import.meta.env.VITE_APP_SANCTION_API_URL}/${id}`
-
-    await axios.get(url, {headers: {
-      Authorization: `Bearer ${token}`}
-    })
-    .then(resp => setData(resp.data.sanction))
-    .catch(err => err && toast.error("Unable to load data, try again later"))
-  }
-
   const handleDelete = async() => {
     let url =`${import.meta.env.VITE_APP_SANCTION_API_URL}/${id}`
 
@@ -31,8 +21,14 @@ function SanctionDetails() {
   }
 
   useEffect(() => {
-    getSanctions()
-  }, [id])
+    let url =`${import.meta.env.VITE_APP_SANCTION_API_URL}/${id}`
+
+    axios.get(url, {headers: {
+      Authorization: `Bearer ${token}`}
+    })
+    .then(resp => setData(resp.data.sanction))
+    .catch(err => err && toast.error("Unable to load data, try again later"))
+  }, [token, id])
 
   return (
     <article>
@@ -48,7 +44,7 @@ function SanctionDetails() {
         <p><b>Details:</b> {data?.details}</p>
       </div>
       <div className='btn-container'>
-        <Link to={`/${id}`} className='action-btn'>
+        <Link to={`/dashboard/sanction/edit/${id}`} className='action-btn'>
           <FaPenFancy />
         </Link>
         <button type='button' className='danger-btn' onClick={handleDelete}>

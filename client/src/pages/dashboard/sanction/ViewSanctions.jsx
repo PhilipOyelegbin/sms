@@ -8,21 +8,17 @@ function ViewSanctions() {
   const {email} = useParams()
   const [data, setData] = useState(null)
 
-  const getSanctions = async() => {
+  useEffect(() => {
     const token = sessionStorage.getItem('token');
 
     let url =(`${import.meta.env.VITE_APP_SANCTION_API_URL}`  || `${import.meta.env.VITE_APP_SANCTION_API_URL}/query?students=${email}`)
 
-    await axios.get(url, {headers: {
+    axios.get(url, {headers: {
       Authorization: `Bearer ${token}`}
     })
     .then(resp => setData(resp.data.allSanction))
     .catch(err => toast.error(err.message))
-  }
-
-  useEffect(() => {
-    getSanctions()
-  }, [])
+  }, [email])
 
   return (
     <article className='sanctions-container'>

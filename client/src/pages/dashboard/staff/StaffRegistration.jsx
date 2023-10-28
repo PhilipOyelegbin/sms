@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { FaCircleNotch } from 'react-icons/fa'
 import axios from 'axios'
-import "./registration.css"
+import "../registration.css"
 
 
-function AdminRegistration() {
+function StaffRegistration() {
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     first_name: "", last_name: "", email: "", phone_number: "", gender: "", date_of_birth: "", role: "", subject: "", home_address: "", password: ""
@@ -102,11 +103,11 @@ function AdminRegistration() {
               <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} minLength={6} placeholder="xxxxxx" required/>
             </div>
           </div>
-          <button type="submit" className="success-btn" onClick={handleSubmit}>{isLoading ? "Loading" : "Register"}</button>
+          <button type="submit" className="success-btn" onClick={handleSubmit}>{isLoading ? <FaCircleNotch/> : "Register"}</button>
         </form>
       </div>
     </article>
   )
 }
 
-export default AdminRegistration
+export default StaffRegistration

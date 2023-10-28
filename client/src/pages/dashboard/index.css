@@ -123,6 +123,7 @@
   padding-left: 12px;
 }
 
+.staffs-container,
 .profile-details-container,
 .sanctions-container {
   display: grid;
@@ -131,6 +132,7 @@
   padding: 12px;
 }
 
+.staffs-container > a,
 .sanctions-container > a {
   text-decoration: none;
   color: var(--primary-color);
@@ -162,6 +164,7 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .staffs-container,
   .profile-details-container,
   .sanctions-container {
     display: grid;
@@ -202,6 +205,7 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .staffs-container,
   .profile-details-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

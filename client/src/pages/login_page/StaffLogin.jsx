@@ -7,7 +7,7 @@ import admin_image from '../../assets/admin.jpg'
 import "./login.css"
 
 
-function AdminLogin() {
+function StaffLogin() {
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({email: "", password: ""})
 
@@ -38,7 +38,7 @@ function AdminLogin() {
     <article className="login-page">
       <div className="login-container">
         <div className="left-column">
-          <h2>Admin Login</h2>
+          <h2>Staff Login</h2>
           <LoginForm formData={formData} isLoading={isLoading} handleChange={handleChange} handleSubmit={handleSubmit} />
         </div>
 
@@ -50,4 +50,4 @@ function AdminLogin() {
   )
 }
 
-export default AdminLogin
+export default StaffLogin

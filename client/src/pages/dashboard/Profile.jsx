@@ -57,7 +57,7 @@ function Profile() {
           <h3>{data?.date_of_birth}</h3>
         </div>
         <div className='profile-content'>
-          <p>Subjects</p>
+          <p>Subject(s)</p>
           <h3>{data?.subject}</h3>
         </div>
         <div className='profile-content'>

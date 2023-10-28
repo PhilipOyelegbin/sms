@@ -7,20 +7,16 @@ import axios from "axios";
 function ViewStudents() {
   const [data, setData] = useState(null)
 
-  const getStudents = async() => {
+  useEffect(() => {
     const token = sessionStorage.getItem('token');
 
     let url =`${import.meta.env.VITE_APP_STUDENT_API_URL}`
 
-    await axios.get(url, {headers: {
+    axios.get(url, {headers: {
       Authorization: `Bearer ${token}`}
     })
     .then(resp => setData(resp.data.allStudent))
     .catch(err => toast.error(err.message))
-  }
-
-  useEffect(() => {
-    getStudents()
   }, [])
 
   return (
