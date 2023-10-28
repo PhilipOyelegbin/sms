@@ -1,10 +1,9 @@
 :root {
   --primary-color: #001F3F;
   --secondary-color: #0074D9;
-  --success-btn: #2ECC40;
-  --success-btn-hover: #2ac13c;
+  --success-color: #2ECC40;
+  --success-color-hover: #2ac13c;
+  --danger-color: #d92f2f;
   --gray: #cacaca;
   --white: #FFFFFF;
-  --red: #d92f2f;
-  --accent-color4: #FFDC00;
 }

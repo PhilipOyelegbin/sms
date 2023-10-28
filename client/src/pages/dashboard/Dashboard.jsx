@@ -1,34 +1,78 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import jwt_decode from 'jwt-decode'
 import {
-  FaBinoculars,
   FaBookOpen,
   FaChalkboardTeacher,
   FaChartPie,
   FaRegEye,
   FaRegIdBadge,
-  FaRegIdCard
+  FaRegIdCard,
+  FaUsers
 } from "react-icons/fa"
 
 
 function Dashboard() {
-  const cardDetails = [
-    {icon: <FaRegIdCard className="card-icon"/>, url: "register/admin", name: "New Admin"},
-    {icon: <FaRegIdBadge className="card-icon"/>, url: "register/student", name: "New Student"},
-    {icon: <FaChalkboardTeacher className="card-icon"/>, url: "score/create", name: "New Score"},
-    {icon: <FaChartPie className="card-icon"/>, url: "score/view", name: "My Scores"},
-    {icon: <FaBookOpen className="card-icon"/>, url: "sanction/create", name: "New Sanction"},
-    {icon: <FaRegEye className="card-icon"/>, url: "sanction/view/:id", name: "My Sanction"},
-    {icon: <FaBinoculars className="card-icon"/>, url: "sanction/view", name: "All Sanction"},
-  ]
+  const [whoIs, setWhoIs] = useState(null)
+  // eslint-disable-next-line react/prop-types
+  const DashboardCard = ({icon, url, name}) => (
+    <div className="card">
+      {icon}
+      <Link to={url} className="action-btn">{name}</Link>
+    </div>
+  )
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token")
+    const decode = jwt_decode(token)
+    setWhoIs(decode.role)
+  }, [])
 
   return (
     <section className="card-container">
-      {cardDetails?.map((item, index) => (
-        <div className="card" key={index}>
-          {item.icon}
-          <Link to={item.url} className="card-btn">{item.name}</Link>
-        </div>
-      ))}
+      {(whoIs !== "Student") && (
+        <>
+          <DashboardCard
+            icon={<FaRegIdCard className="card-icon"/>}
+            url="register/admin"
+            name="New Admin"
+          />
+          <DashboardCard
+            icon={<FaRegIdBadge className="card-icon"/>}
+            url="register/student"
+            name="New Student"
+          />
+          <DashboardCard
+            icon={<FaUsers className="card-icon"/>}
+            url="student/view"
+            name="Students"
+          />
+          <DashboardCard
+            icon={<FaChalkboardTeacher className="card-icon"/>}
+            url="score/create"
+            name="New Score"
+          />
+          <DashboardCard
+            icon={<FaBookOpen className="card-icon"/>}
+            url="sanction/create"
+            name="New Sanction"
+          />
+        </>
+      )}
+      {(whoIs === "Student") && (
+        <>
+          <DashboardCard
+            icon={<FaChartPie className="card-icon"/>}
+            url="score/view"
+            name="My Scores"
+          />
+        </>
+      )}
+      <DashboardCard
+        icon={<FaRegEye className="card-icon"/>}
+        url="sanction/view"
+        name="Sanctions"
+      />
     </section>
   )
 }

@@ -25,7 +25,7 @@ function ViewSanctions() {
   }, [])
 
   return (
-    <article className='sanctions_container'>
+    <article className='sanctions-container'>
       {data?.map(sanction => (
         <Link to={`${sanction._id}`} key={sanction._id}>
           <p><b>Student email:</b> {sanction.student}</p>

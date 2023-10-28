@@ -7,11 +7,11 @@ function Home() {
       <div className="container">
         <div className="column">
           <h2>Student Login</h2>
-          <Link to="/login/student" className='btn-login'>Login</Link>
+          <Link to="/login/student" className='success-btn'>Login</Link>
         </div>
         <div className="column">
           <h2>Admin Login</h2>
-          <Link to="/login/admin" className='btn-login'>Login</Link>
+          <Link to="/login/admin" className='success-btn'>Login</Link>
         </div>
       </div>
     </article>

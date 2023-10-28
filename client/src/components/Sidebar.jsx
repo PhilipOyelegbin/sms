@@ -16,6 +16,7 @@ function Sidebar() {
 
   const handleExit = () => {
     navigate('/')
+    sessionStorage.clear()
   }
 
   return (
@@ -27,9 +28,9 @@ function Sidebar() {
       </div>
 
       <div className="sidebar-content">
-        <Link to="/dashboard"><FaHome/> Dashboard</Link>
-        <Link to="profile"><FaUser/> My Profile</Link>
-        <button className='logout-btn' onClick={handleExit}>Exit <FaArrowAltCircleLeft/></button>
+        <Link to="/dashboard" onClick={() => setToggleBar(prev => !prev)}><FaHome/> Dashboard</Link>
+        <Link to="profile" onClick={() => setToggleBar(prev => !prev)}><FaUser/> My Profile</Link>
+        <button className='danger-btn' onClick={handleExit}>Exit <FaArrowAltCircleLeft/></button>
       </div>
     </aside>
   )

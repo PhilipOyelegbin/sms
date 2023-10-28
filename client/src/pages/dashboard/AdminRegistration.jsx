@@ -102,7 +102,7 @@ function AdminRegistration() {
               <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} minLength={6} placeholder="xxxxxx" required/>
             </div>
           </div>
-          <button type="submit" onClick={handleSubmit}>{isLoading ? "Loading" : "Register"}</button>
+          <button type="submit" className="success-btn" onClick={handleSubmit}>{isLoading ? "Loading" : "Register"}</button>
         </form>
       </div>
     </article>

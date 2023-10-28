@@ -14,3 +14,75 @@ body {
   color: var(--primary-color);
 }
 
+.success-btn {
+  display: inline-block;
+  background-color: var(--success-color);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.success-btn:hover {
+  background-color: var(--success-color-hover);
+}
+
+.action-btn {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  text-align: center;
+}
+
+.action-btn:hover {
+  background-color: var(--white);
+  color: var(--secondary-color);
+  box-shadow: 1px 1px 8px var(--secondary-color);
+}
+
+.danger-btn {
+  display: inline-block;
+  background-color: var(--danger-color);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  text-align: center;
+}
+
+.danger-btn:hover {
+  background-color: var(--white);
+  color: var(--danger-color);
+  box-shadow: 1px 1px 8px var(--danger-color);
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  gap: 12px;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--white);
+}
+
+.loader > div {
+  border: 8px solid var(--primary-color);
+  border-radius: 100%;
+  padding: 20px 20px;
+}

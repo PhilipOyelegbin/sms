@@ -9,7 +9,7 @@ function LoginForm({formData, isLoading, handleChange, handleSubmit}) {
         <label htmlFor="password">Password:</label>
         <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} minLength="6"  placeholder="Enter your password" required/>
       </div>
-      <button type="submit">{isLoading ? "Loading" : "Login"}</button>
+      <button type="submit" className="success-btn">{isLoading ? "Loading" : "Login"}</button>
     </form>
   )
 }

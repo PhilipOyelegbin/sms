@@ -27,21 +27,6 @@
   text-align: center;
 }
 
-.btn-login {
-  display: inline-block;
-  background-color: var(--success-btn);
-  color: var(--white);
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: background-color 0.3s;
-}
-
-.btn-login:hover {
-  background-color: var(--success-btn-hover);
-}
 
 @media (min-width: 768px) {
   .container {

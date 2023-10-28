@@ -59,20 +59,19 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  transition: all ease-in-out 300ms;
 }
 
-.logout-btn {
+.sidebar-content > a:hover {
+  color: var(--gray);
+}
+
+.sidebar-content > button {
   display: flex;
   align-items: center;
   gap: 20px;
-  background-color: var(--red);
-  color: var(--white);
-  padding: 8px 16px;
-  border-radius: 8px;
   margin-top: 100px;
   font-size: 20px;
-  width: fit-content;
-  cursor: pointer;
 }
 
 .main-content {
@@ -110,16 +109,6 @@
   font-size: 60px;
 }
 
-.card-btn {
-  display: block;
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  text-align: center;
-}
-
 .profile {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -134,19 +123,28 @@
   padding-left: 12px;
 }
 
-.sanctions_container {
-  display: flex;
-  flex-flow: column;
+.profile-details-container,
+.sanctions-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   gap: 12px;
   padding: 12px;
 }
 
-.sanctions_container > a {
+.sanctions-container > a {
   text-decoration: none;
   color: var(--primary-color);
   box-shadow: 2px 2px 8px var(--primary-color);
   padding: 8px;
   border-radius: 8px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 12px;
 }
 
 footer {
@@ -162,6 +160,14 @@ footer {
 @media (min-width: 450px) {
   .card-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-details-container,
+  .sanctions-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px;
   }
 }
 
@@ -194,6 +200,13 @@ footer {
   .profile {
     margin-left: 0;
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-details-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 12px;
   }
 
   footer {
