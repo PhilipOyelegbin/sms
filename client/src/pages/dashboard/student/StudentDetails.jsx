@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FaPenFancy, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -10,13 +10,18 @@ function StudentDetails() {
   const token = sessionStorage.getItem('token');
   const [data, setData] = useState(null)
 
+  const navigate = useNavigate()
+
   const handleDelete = async() => {
     let url =`${import.meta.env.VITE_APP_STUDENT_API_URL}/${id}`
 
     await axios.delete(url, {headers: {
       Authorization: `Bearer ${token}`}
     })
-    .then(resp => toast.success(resp.data.message))
+    .then(resp => {
+      toast.success(resp.data.message)
+      navigate("/dashboard")
+    })
     .catch(err => err && toast.error("Unable to delete, try again later"))
   }
 

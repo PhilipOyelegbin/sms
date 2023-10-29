@@ -7,10 +7,10 @@ import "../registration.css"
 
 
 function StudentRegistration() {
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     first_name: "", last_name: "", email: "", class: "", gender: "", date_of_birth: "", blood_group: "", medical_information: "", disabilities: "", guardian_name: "", relationship: "", guardian_email: "", guardian_phone_number: "", guardian_address: "", emergency_name: "", emergency_phone_number: "", emergency_address: "", password: ""
   })
-  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
     const {name, value} = e.target

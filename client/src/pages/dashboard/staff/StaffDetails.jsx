@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
 import { FaPenFancy, FaTrash } from 'react-icons/fa';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
@@ -10,13 +10,18 @@ function StaffDetails() {
   const token = sessionStorage.getItem('token');
   const [data, setData] = useState(null)
 
+  const navigate = useNavigate()
+
   const handleDelete = async() => {
     let url =`${import.meta.env.VITE_APP_ADMIN_API_URL}/${id}`
 
     await axios.delete(url, {headers: {
       Authorization: `Bearer ${token}`}
     })
-    .then(resp => toast.success(resp.data.message))
+    .then(resp => {
+      toast.success(resp.data.message)
+      navigate("/dashboard")
+    })
     .catch(err => err && toast.error("Unable to delete, try again later"))
   }
 

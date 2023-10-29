@@ -10,12 +10,10 @@ function UpdateStaff() {
   const {id} = useParams()
   const token = sessionStorage.getItem('token');
   const [isLoading, setIsLoading] = useState(false)
-  const [data, setData] = useState(null)
   const [formData, setFormData] = useState({
-    first_name: data?.first_name, last_name: data?.last_name, email: data?.email, phone_number: data?.phone_number, gender: data?.gender, date_of_birth: data?.date_of_birth, role: data?.role, subject: data?.subject, home_address: data?.home_address, password: ""
+    first_name: "", last_name: "", email: "", phone_number: "", gender: "", date_of_birth: "", role: "", subject: "", home_address: "", password: ""
   })
 
-  console.log(formData)
   const handleChange = (e) => {
     const {name, value} = e.target
     setFormData({...formData, [name]: value})
@@ -48,7 +46,9 @@ function UpdateStaff() {
     axios.get(url, {headers: {
       Authorization: `Bearer ${token}`}
     })
-    .then(resp => setData(resp.data.staff))
+    .then(resp => setFormData({
+      first_name: resp.data.staff?.first_name, last_name: resp.data.staff?.last_name, email: resp.data.staff?.email, phone_number: resp.data.staff?.phone_number, gender: resp.data.staff?.gender, date_of_birth: resp.data.staff?.date_of_birth, role: resp.data.staff?.role, subject: resp.data.staff?.subject, home_address: resp.data.staff?.home_address, password: ""
+    }))
     .catch(err => err && toast.error("Unable to load data, try again later"))
   }, [token, id])
 

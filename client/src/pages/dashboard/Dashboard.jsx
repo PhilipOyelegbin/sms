@@ -30,6 +30,7 @@ function Dashboard() {
 
   return (
     <section className="card-container">
+      {/* Staff views */}
       {(whoIs !== "Student") && (
         <>
           <DashboardCard
@@ -64,15 +65,13 @@ function Dashboard() {
           />
         </>
       )}
-      {(whoIs === "Student") && (
-        <>
-          <DashboardCard
-            icon={<FaChartPie className="card-icon"/>}
-            url="score/view"
-            name="My Scores"
-          />
-        </>
-      )}
+
+      {/* general view */}
+      <DashboardCard
+        icon={<FaChartPie className="card-icon"/>}
+        url="score/view"
+        name="Scores"
+      />
       <DashboardCard
         icon={<FaRegEye className="card-icon"/>}
         url="sanction/view"

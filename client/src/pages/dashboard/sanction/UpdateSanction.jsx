@@ -10,9 +10,8 @@ function UpdateSanction() {
   const {id} = useParams()
   const token = sessionStorage.getItem('token');
   const [isLoading, setIsLoading] = useState(false)
-  const [data, setData] = useState(null)
   const [formData, setFormData] = useState({
-    student: data?.student, incident: data?.incident, date: data?.date, time: data?.time, official: data?.official, location: data?.location, witnesses: data?.witnesses, penalties: data?.penalties, details: data?.details
+    student: "", incident: "", date: "", time: "", official: "", location: "", witnesses: "", penalties: "", details: ""
   })
 
   const handleChange = (e) => {
@@ -47,7 +46,9 @@ function UpdateSanction() {
     axios.get(url, {headers: {
       Authorization: `Bearer ${token}`}
     })
-    .then(resp => setData(resp.data.sanction))
+    .then(resp => setFormData({
+      student: resp.data.sanction?.student, incident: resp.data.sanction?.incident, date: resp.data.sanction?.date, time: resp.data.sanction?.time, official: resp.data.sanction?.official, location: resp.data.sanction?.location, witnesses: resp.data.sanction?.witnesses, penalties: resp.data.sanction?.penalties, details: resp.data.sanction?.details
+    }))
     .catch(err => err && toast.error("Unable to load data, try again later"))
   }, [token, id])
 

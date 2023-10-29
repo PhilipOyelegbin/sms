@@ -25,7 +25,7 @@ function StudentLogin() {
       const result = await axios.post(import.meta.env.VITE_APP_STUDENT_AUTH_URL, formData)
       setFormData({email: "", password: ""})
       toast.success("Login successfully...")
-      sessionStorage.setItem("token", result.data.user)
+      sessionStorage.setItem("token", result.data.student)
       navigate("/dashboard")
     } catch (error) {
       error.message && toast.error("Invalid email or password!")

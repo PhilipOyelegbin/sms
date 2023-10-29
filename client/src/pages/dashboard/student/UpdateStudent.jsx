@@ -8,10 +8,9 @@ import "../registration.css"
 function UpdateStudent() {
   const {id} = useParams()
   const token = sessionStorage.getItem('token');
-  const [data, setData] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    first_name: data?.first_name, last_name: data?.last_name, email: data?.email, class: data?.class, gender: data?.gender, date_of_birth: data?.date_of_birth, blood_group: data?.blood_group, medical_information: data?.medical_information, disabilities: data?.disabilities, guardian_name: data?.guardian_name, relationship: data?.relationship, guardian_email: data?.guardian_email, guardian_phone_number: data?.guardian_phone_number, guardian_address: data?.guardian_address, emergency_name: data?.emergency_name, emergency_phone_number: data?.emergency_phone_number, emergency_address: data?.emergency_address, password: ""
+    first_name: "", last_name: "", email: "", class: "", gender: "", date_of_birth: "", blood_group: "", medical_information: "", disabilities: "", guardian_name: "", relationship: "", guardian_email: "", guardian_phone_number: "", guardian_address: "", emergency_name: "", emergency_phone_number: "", emergency_address: "", password: ""
   })
 
   const handleChange = (e) => {
@@ -46,7 +45,9 @@ function UpdateStudent() {
     axios.get(url, {headers: {
       Authorization: `Bearer ${token}`}
     })
-    .then(resp => setData(resp.data.student))
+    .then(resp => setFormData({
+      first_name: resp.data.student?.first_name, last_name: resp.data.student?.last_name, email: resp.data.student?.email, class: resp.data.student?.class, gender: resp.data.student?.gender, date_of_birth: resp.data.student?.date_of_birth, blood_group: resp.data.student?.blood_group, medical_information: resp.data.student?.medical_information, disabilities: resp.data.student?.disabilities, guardian_name: resp.data.student?.guardian_name, relationship: resp.data.student?.relationship, guardian_email: resp.data.student?.guardian_email, guardian_phone_number: resp.data.student?.guardian_phone_number, guardian_address: resp.data.student?.guardian_address, emergency_name: resp.data.student?.emergency_name, emergency_phone_number: resp.data.student?.emergency_phone_number, emergency_address: resp.data.student?.emergency_address, password: ""
+    }))
     .catch(err => err && toast.error("Unable to load data, try again later"))
   }, [token, id])
 

@@ -16,13 +16,22 @@ function Profile() {
       authUser = decoded
     }
 
-    let url =(`${import.meta.env.VITE_APP_ADMIN_API_URL}/${authUser.email}` || `${import.meta.env.VITE_APP_STUDENT_API_URL}/${authUser.email}`)
+    let staffUrl =`${import.meta.env.VITE_APP_ADMIN_API_URL}/${authUser.email}`
+    let studentUrl =`${import.meta.env.VITE_APP_STUDENT_API_URL}/${authUser.email}`
 
-    await axios.get(url, {headers: {
-      Authorization: `Bearer ${token}`}
-    })
-    .then(resp => setData(resp.data.staff))
-    .catch(err => toast.error(err.message))
+    if(authUser?.role !== "Student") {
+      await axios.get(staffUrl, {headers: {
+        Authorization: `Bearer ${token}`}
+      })
+      .then(resp => setData(resp.data.staff))
+      .catch(err => toast.error(err.message))
+    } else {
+      await axios.get(studentUrl, {headers: {
+        Authorization: `Bearer ${token}`}
+      })
+      .then(resp => setData(resp.data.student))
+      .catch(err => toast.error(err.message))
+    }
   }
 
   useEffect(() => {
