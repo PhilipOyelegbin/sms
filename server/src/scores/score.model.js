@@ -2,7 +2,7 @@ const {Schema, model} = require("mongoose")
 
 const scoreSchema = new Schema({
   student: {
-    type: Schema.Types.ObjectId,
+    type: Schema.Types.String,
     ref: "sms_students",
     require: [true, "student email is required"],
   },
