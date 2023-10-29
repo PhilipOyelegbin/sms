@@ -14,7 +14,7 @@ const router = Router()
 
 router.route("/").get(restrict("Admin", "Teacher"), getAllScore).post(restrict("Admin", "Teacher"), createScore)
 
-router.get("/query", restrict("Admin", "Teacher", "User"), getScoreByStudent)
+router.get("/query", restrict("Admin", "Teacher", "Student"), getScoreByStudent)
 
 router.route("/:id").get(restrict("Admin", "Teacher"), getOneScore).patch(restrict("Admin", "Teacher"), updateScore).delete(restrict("Admin", "Teacher"), deleteScore)
 

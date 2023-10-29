@@ -14,7 +14,7 @@ const router = Router()
 
 router.route("/").get(restrict("Admin", "Teacher"), getAllSanction).post(restrict("Admin", "Teacher"), createSanction)
 
-router.get("/query", restrict("Admin", "Teacher", "User"), getSanctionByStudent)
+router.get("/query", restrict("Admin", "Teacher", "Student"), getSanctionByStudent)
 
 router.route("/:id").get(restrict("Admin", "Teacher"), getOneSanction).patch(restrict("Admin", "Teacher"), updateSanction).delete(restrict("Admin", "Teacher"), deleteSanction)
 
