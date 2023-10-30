@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FaCircleNotch } from "react-icons/fa"
 
 function LoginForm({formData, isLoading, handleChange, handleSubmit}) {
@@ -15,7 +16,5 @@ function LoginForm({formData, isLoading, handleChange, handleSubmit}) {
     </form>
   )
 }
-
-LoginForm.propTypes = {formData: null, isLoading: null, handleChange: Function, handleSubmit: Function}
 
 export default LoginForm
