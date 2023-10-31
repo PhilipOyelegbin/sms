@@ -63,7 +63,7 @@ const createScore = async(req, res) => {
     .catch(err => err)
 
     // calculate the grade
-    const getGrade = await grader.calculateGrade(getAvg)
+    const getGrade = await grader.calculateGrade(getAvg.toFixed())
       .then(grade => grade)
       .catch(err => err)
 
@@ -103,7 +103,7 @@ const updateScore = async(req, res) => {
     .catch(err => err)
 
     // calculate the grade
-    const getGrade = await grader.calculateGrade(getAvg)
+    const getGrade = await grader.calculateGrade(getAvg.toFixed())
       .then(grade => grade)
       .catch(err => err)
 
