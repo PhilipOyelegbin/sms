@@ -7,7 +7,7 @@ import {
   FaUser,
   FaArrowAltCircleLeft
 } from "react-icons/fa"
-
+import logo from '../assets/sms.png'
 
 function Sidebar() {
   const [toggleBar, setToggleBar] = useState(false)
@@ -22,7 +22,7 @@ function Sidebar() {
   return (
     <aside className={`sidebar ${!toggleBar && "sidebar-hide"}`}>
       <div className='sidebar-header'>
-        <h1>SMS</h1>
+        <img src={logo} className='logo' alt="sms logo" />
         <FaChevronCircleRight className={`toggle-btn ${toggleBar && "toggle-btn-invisible"}`} onClick={() => setToggleBar(prev => !prev)} />
         <FaChevronCircleLeft className={`toggle-btn ${!toggleBar && "toggle-btn-invisible"}`} onClick={() => setToggleBar(prev => !prev)} />
       </div>
