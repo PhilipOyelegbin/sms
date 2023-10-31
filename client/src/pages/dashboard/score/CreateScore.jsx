@@ -9,7 +9,7 @@ import "../registration.css"
 function CreateScore() {
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    student: "", math: "", english: "", biology: "", government: "", session: "", comment: ""
+    student: "", math: "", english: "", biology: "", government: "", session: ""
   })
 
   const handleChange = (e) => {

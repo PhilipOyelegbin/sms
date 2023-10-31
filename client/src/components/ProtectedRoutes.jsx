@@ -5,13 +5,15 @@ import jwt_decode from 'jwt-decode'
 const ProtectedRoutes = () => {
   const token = sessionStorage.getItem("token")
   const time = new Date().getTime()/1000
-  let cutOffTime = time.toString().split(".")
+  let cutOffTime = time.toFixed()
   let expTime = null
+
   if(token) {
     const decode = jwt_decode(token)
     expTime = decode.exp
   }
-  if(parseInt(cutOffTime[0]) > expTime) {
+
+  if(parseInt(cutOffTime) > expTime) {
     sessionStorage.clear()
     return <Navigate to={"/"}/>
   }
