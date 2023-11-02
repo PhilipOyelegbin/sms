@@ -16,7 +16,7 @@ router.route("/").get(restrict("Admin", "Teacher"), getAllSanction).post(restric
 
 router.get("/query", restrict("Admin", "Teacher", "Student"), getSanctionByStudent)
 
-router.route("/:id").get(restrict("Admin", "Teacher"), getOneSanction).patch(restrict("Admin", "Teacher"), updateSanction).delete(restrict("Admin", "Teacher"), deleteSanction)
+router.route("/:id").get(restrict("Admin", "Teacher", "Student"), getOneSanction).patch(restrict("Admin", "Teacher"), updateSanction).delete(restrict("Admin", "Teacher"), deleteSanction)
 
 
 module.exports = router

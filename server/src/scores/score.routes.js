@@ -16,7 +16,7 @@ router.route("/").get(restrict("Admin", "Teacher"), getAllScore).post(restrict("
 
 router.get("/query", restrict("Admin", "Teacher", "Student"), getScoreByStudent)
 
-router.route("/:id").get(restrict("Admin", "Teacher"), getOneScore).patch(restrict("Admin", "Teacher"), updateScore).delete(restrict("Admin", "Teacher"), deleteScore)
+router.route("/:id").get(restrict("Admin", "Teacher", "Student"), getOneScore).patch(restrict("Admin", "Teacher"), updateScore).delete(restrict("Admin", "Teacher"), deleteScore)
 
 
 module.exports = router
