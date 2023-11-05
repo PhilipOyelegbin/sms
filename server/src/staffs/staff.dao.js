@@ -3,7 +3,7 @@ const staffModel = require("./staff.model")
 
 const getAllStaff = async() => await staffModel.find({})
 
-const getOneStaff = async(email) => await staffModel.find({email})
+const getOneStaff = async(email) => await staffModel.findOne({email})
 
 const createStaff = async(newStaff) => await staffModel.create(newStaff)
 
