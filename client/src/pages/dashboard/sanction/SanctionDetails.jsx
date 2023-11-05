@@ -6,6 +6,7 @@ import axios from 'axios';
 
 
 function SanctionDetails() {
+  const role = sessionStorage.getItem("role")
   const {id} = useParams()
   const token = sessionStorage.getItem('token');
   const [data, setData] = useState(null)
@@ -48,14 +49,16 @@ function SanctionDetails() {
         <p><b>Penalties:</b> {data?.penalties}</p>
         <p><b>Details:</b> {data?.details}</p>
       </div>
-      <div className='btn-container'>
-        <Link to={`/dashboard/sanction/edit/${id}`} className='action-btn'>
-          <FaPenFancy />
-        </Link>
-        <button type='button' className='danger-btn' onClick={handleDelete}>
-          <FaTrash />
-        </button>
-      </div>
+      {role !== "Student" &&
+        <div className='btn-container'>
+          <Link to={`/dashboard/sanction/edit/${id}`} className='action-btn'>
+            <FaPenFancy />
+          </Link>
+          <button type='button' className='danger-btn' onClick={handleDelete}>
+            <FaTrash />
+          </button>
+        </div>
+      }
     </article>
   )
 }

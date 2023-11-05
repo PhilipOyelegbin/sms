@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode'
 
 
 function ViewSanctions() {
+  const [loading, setLoading] = useState(true)
   const [data, setData] = useState(null)
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function ViewSanctions() {
       })
       .then(resp => setData(resp.data.allSanction))
       .catch(err => toast.error(err.message))
+      .finally(setLoading(false))
     } else {
       let studentUrl = `${import.meta.env.VITE_APP_SANCTION_API_URL}/query?student=${authUser?.email}`
       axios.get(studentUrl, {headers: {
@@ -31,19 +33,21 @@ function ViewSanctions() {
       })
       .then(resp => setData(resp.data.sanction))
       .catch(err => toast.error(err.message))
+      .finally(setLoading(false))
     }
   }, [])
 
   return (
     <article className='sanctions-container'>
-      {!data && <h3>No sanctions available!</h3>}
+      {loading && <h3>Please wait...</h3>}
+      {!data?._id && <h3>No sanctions available!</h3>}
       {(Array.isArray(data)) ? data?.map(sanction => (
         <Link to={`${sanction._id}`} key={sanction._id}>
           <p><b>Student email:</b> {sanction.student}</p>
           <p><b>Incident:</b> {sanction.incident}</p>
           <p><b>Date:</b> {sanction.date}</p>
         </Link>
-      )) :
+      )) : data?._id &&
         <Link to={`${data?._id}`}>
           <p><b>Student email:</b> {data?.student}</p>
           <p><b>Incident:</b> {data?.incident}</p>

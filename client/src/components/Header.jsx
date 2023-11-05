@@ -1,8 +1,10 @@
-function Header(data) {
+import BreadCrumb from "./BreadCrumb"
+
+function Header(state) {
   return (
     <header className="header">
-      <h2>Dashboard</h2>
-      <p>{data.data?.first_name}</p>
+      <BreadCrumb/>
+      <p>{state?.first_name}</p>
     </header>
   )
 }

@@ -6,6 +6,7 @@ import axios from 'axios';
 
 
 function ScoreDetails() {
+  const role = sessionStorage.getItem("role")
   const {id} = useParams()
   const token = sessionStorage.getItem('token');
   const [data, setData] = useState(null)
@@ -48,14 +49,16 @@ function ScoreDetails() {
         <p><b>Session:</b> {data?.session}</p>
         <p><b>Comment:</b> {data?.comment}</p>
       </div>
-      <div className='btn-container'>
-        <Link to={`/dashboard/score/edit/${id}`} className='action-btn'>
-          <FaPenFancy />
-        </Link>
-        <button type='button' className='danger-btn' onClick={handleDelete}>
-          <FaTrash />
-        </button>
-      </div>
+      {role !== "Student" &&
+        <div className='btn-container'>
+          <Link to={`/dashboard/score/edit/${id}`} className='action-btn'>
+            <FaPenFancy />
+          </Link>
+          <button type='button' className='danger-btn' onClick={handleDelete}>
+            <FaTrash />
+          </button>
+        </div>
+      }
     </article>
   )
 }
