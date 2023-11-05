@@ -32,7 +32,7 @@ function ViewSanctions() {
         Authorization: `Bearer ${token}`}
       })
       .then(resp => setData(resp.data.sanction))
-      .catch(err => toast.error(err.message))
+      .catch(err => toast.error(err))
       .finally(setLoading(false))
     }
   }, [])
@@ -40,7 +40,6 @@ function ViewSanctions() {
   return (
     <article className='sanctions-container'>
       {loading && <h3>Please wait...</h3>}
-      {!data?._id && <h3>No sanctions available!</h3>}
       {(Array.isArray(data)) ? data?.map(sanction => (
         <Link to={`${sanction._id}`} key={sanction._id}>
           <p><b>Student email:</b> {sanction.student}</p>

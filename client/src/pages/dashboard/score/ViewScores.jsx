@@ -40,7 +40,6 @@ function ViewScores() {
   return (
     <article className='scores-container'>
       {loading && <h3>Please wait...</h3>}
-      {!data?._id && <h3>No scores available!</h3>}
       {(Array.isArray(data)) ? data?.map(score => (
         <Link to={`${score._id}`} key={score._id}>
           <p><b>Student ID:</b> {score.student}</p>
