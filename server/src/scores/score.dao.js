@@ -5,7 +5,7 @@ const getAllScore = async() => await scoreModel.find({})
 
 const getOneScore = async(id) => await scoreModel.findById({_id: id});
 
-const getScoreByStudent = async(email) => await scoreModel.findOne({student: email});
+const getScoreByStudent = async(email) => await scoreModel.find({student: email});
 
 const createScore = async(newScore) => await scoreModel.create(newScore)
 

@@ -5,7 +5,7 @@ const getAllSanction = async() => await sanctionModel.find({})
 
 const getOneSanction = async(id) => await sanctionModel.findById({_id: id});
 
-const getSanctionByStudent = async(email) => await sanctionModel.findOne({student: email});
+const getSanctionByStudent = async(email) => await sanctionModel.find({student: email});
 
 const createSanction = async(newSanction) => await sanctionModel.create(newSanction)
 

@@ -3,7 +3,7 @@ const studentModel = require("./student.model")
 
 const getAllStudent = async() => await studentModel.find({})
 
-const getOneStudent = async(email) => await studentModel.findOne({email})
+const getOneStudent = async(email) => await studentModel.find({email})
 
 const createStudent = async(newStudent) => await studentModel.create(newStudent)
 
