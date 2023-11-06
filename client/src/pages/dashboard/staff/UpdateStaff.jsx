@@ -47,7 +47,7 @@ function UpdateStaff() {
       Authorization: `Bearer ${token}`}
     })
     .then(resp => setFormData({
-      first_name: resp.data.staff?.first_name, last_name: resp.data.staff?.last_name, email: resp.data.staff?.email, phone_number: resp.data.staff?.phone_number, gender: resp.data.staff?.gender, date_of_birth: resp.data.staff?.date_of_birth, role: resp.data.staff?.role, subject: resp.data.staff?.subject, home_address: resp.data.staff?.home_address
+      first_name: resp.data.staff?.first_name, last_name: resp.data.staff?.last_name, email: resp.data.staff?.email, phone_number: resp.data.staff?.phone_number, gender: resp.data.staff?.gender, date_of_birth: resp.data.staff?.date_of_birth, role: resp.data.staff?.role, subject: resp.data.staff?.subject.toString(), home_address: resp.data.staff?.home_address
     }))
     .catch(err => err && toast.error("Unable to load data, try again later"))
   }, [token, id])
