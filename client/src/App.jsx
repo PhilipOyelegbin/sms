@@ -15,11 +15,13 @@ const StaffRegistration = lazy(() => import('./pages/dashboard/staff/StaffRegist
 const Staffs = lazy(() => import('./pages/dashboard/staff/ViewStaffs'));
 const StaffDetails = lazy(() => import('./pages/dashboard/staff/StaffDetails'));
 const UpdateStaff = lazy(() => import('./pages/dashboard/staff/UpdateStaff'));
+const ChangeStaffPwd = lazy(() => import('./pages/dashboard/staff/ChangePassword'));
 const StudentLogin = lazy(() => import('./pages/login_page/StudentLogin'));
 const StudentRegistration = lazy(() => import('./pages/dashboard/student/StudentRegistration'));
 const Students = lazy(() => import('./pages/dashboard/student/ViewStudents'));
 const StudentDetails = lazy(() => import('./pages/dashboard/student/StudentDetails'));
 const UpdateStudent = lazy(() => import('./pages/dashboard/student/UpdateStudent'));
+const ChangeStudentPwd = lazy(() => import('./pages/dashboard/student/ChangePassword'));
 const Scores = lazy(() => import('./pages/dashboard/score/ViewScores'));
 const CreateScore = lazy(() => import('./pages/dashboard/score/CreateScore'));
 const ScoreDetails = lazy(() => import('./pages/dashboard/score/ScoreDetails'));
@@ -46,11 +48,13 @@ function App() {
             <Route path='staff/view' element={<Staffs/>}/>
             <Route path='staff/view/:id' element={<StaffDetails/>}/>
             <Route path='staff/edit/:id' element={<UpdateStaff/>}/>
+            <Route path='staff/update/:id' element={<ChangeStaffPwd/>}/>
             {/* Student routes */}
             <Route path='register/student' element={<StudentRegistration/>}/>
             <Route path='student/view' element={<Students/>}/>
             <Route path='student/view/:id' element={<StudentDetails/>}/>
             <Route path='student/edit/:id' element={<UpdateStudent/>}/>
+            <Route path='student/update/:id' element={<ChangeStudentPwd/>}/>
             {/* Score routes */}
             <Route path='score/create' element={<CreateScore/>}/>
             <Route path='score/view' element={<Scores/>}/>

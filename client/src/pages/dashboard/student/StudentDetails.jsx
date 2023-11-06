@@ -37,6 +37,11 @@ function StudentDetails() {
 
   return (
     <article>
+      <div className='pwd-btn'>
+        <Link to={`/dashboard/student/update/${data?.email}`} className='action-btn'>
+          Change Password
+        </Link>
+      </div>
       <div className='profile-details-container'>
         <p><b>Full name:</b> {data?.first_name} {data?.last_name}</p>
         <p><b>Email:</b> {data?.email}</p>

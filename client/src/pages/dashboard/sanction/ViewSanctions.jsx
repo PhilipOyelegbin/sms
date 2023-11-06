@@ -32,7 +32,7 @@ function ViewSanctions() {
         Authorization: `Bearer ${token}`}
       })
       .then(resp => setData(resp.data.sanction))
-      .catch(err => toast.error(err))
+      .catch(err => toast.error(err.message))
       .finally(setLoading(false))
     }
   }, [])

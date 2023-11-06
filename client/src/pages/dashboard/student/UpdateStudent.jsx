@@ -10,7 +10,7 @@ function UpdateStudent() {
   const token = sessionStorage.getItem('token');
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    first_name: "", last_name: "", email: "", class: "", gender: "", date_of_birth: "", blood_group: "", medical_information: "", disabilities: "", guardian_name: "", relationship: "", guardian_email: "", guardian_phone_number: "", guardian_address: "", emergency_name: "", emergency_phone_number: "", emergency_address: "", password: ""
+    first_name: "", last_name: "", email: "", class: "", gender: "", date_of_birth: "", blood_group: "", medical_information: "", disabilities: "", guardian_name: "", relationship: "", guardian_email: "", guardian_phone_number: "", guardian_address: "", emergency_name: "", emergency_phone_number: "", emergency_address: ""
   })
 
   const handleChange = (e) => {
@@ -28,7 +28,7 @@ function UpdateStudent() {
         headers: {Authorization: `Bearer ${sessionStorage.getItem("token")}`}
       })
       setFormData({
-        first_name: "", last_name: "", email: "", class: "", gender: "", date_of_birth: "", blood_group: "", medical_information: "", disabilities: "", guardian_name: "", relationship: "", guardian_email: "", guardian_phone_number: "", guardian_address: "", emergency_name: "", emergency_phone_number: "", emergency_address: "", password: ""
+        first_name: "", last_name: "", email: "", class: "", gender: "", date_of_birth: "", blood_group: "", medical_information: "", disabilities: "", guardian_name: "", relationship: "", guardian_email: "", guardian_phone_number: "", guardian_address: "", emergency_name: "", emergency_phone_number: "", emergency_address: ""
       })
       toast.success(result.data?.message)
       navigate("/dashboard")
@@ -46,7 +46,7 @@ function UpdateStudent() {
       Authorization: `Bearer ${token}`}
     })
     .then(resp => setFormData({
-      first_name: resp.data.student?.first_name, last_name: resp.data.student?.last_name, email: resp.data.student?.email, class: resp.data.student?.class, gender: resp.data.student?.gender, date_of_birth: resp.data.student?.date_of_birth, blood_group: resp.data.student?.blood_group, medical_information: resp.data.student?.medical_information, disabilities: resp.data.student?.disabilities, guardian_name: resp.data.student?.guardian_name, relationship: resp.data.student?.relationship, guardian_email: resp.data.student?.guardian_email, guardian_phone_number: resp.data.student?.guardian_phone_number, guardian_address: resp.data.student?.guardian_address, emergency_name: resp.data.student?.emergency_name, emergency_phone_number: resp.data.student?.emergency_phone_number, emergency_address: resp.data.student?.emergency_address, password: ""
+      first_name: resp.data.student?.first_name, last_name: resp.data.student?.last_name, email: resp.data.student?.email, class: resp.data.student?.class, gender: resp.data.student?.gender, date_of_birth: resp.data.student?.date_of_birth, blood_group: resp.data.student?.blood_group, medical_information: resp.data.student?.medical_information, disabilities: resp.data.student?.disabilities, guardian_name: resp.data.student?.guardian_name, relationship: resp.data.student?.relationship, guardian_email: resp.data.student?.guardian_email, guardian_phone_number: resp.data.student?.guardian_phone_number, guardian_address: resp.data.student?.guardian_address, emergency_name: resp.data.student?.emergency_name, emergency_phone_number: resp.data.student?.emergency_phone_number, emergency_address: resp.data.student?.emergency_address
     }))
     .catch(err => err && toast.error("Unable to load data, try again later"))
   }, [token, id])
@@ -54,7 +54,7 @@ function UpdateStudent() {
   return (
     <article className="registration-page">
       <div className="registration-container">
-        <h2>Update a student</h2>
+        <h2>Update student details</h2>
         <form autoComplete='off'>
           <div className='form-container'>
             <div className="form-group">
@@ -146,12 +146,8 @@ function UpdateStudent() {
               <label htmlFor="emergency_address">Emergency address:</label>
               <input type="text" id="emergency_address" name="emergency_address" value={formData.emergency_address} onChange={handleChange} maxLength={150} placeholder="7 Olalekan Bashiru Street, Agege Lagos." required/>
             </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password:</label>
-              <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} minLength={6} placeholder="xxxxxx" required/>
-            </div>
           </div>
+
           <button type="submit" className='success-btn' onClick={handleSubmit}>{isLoading ? <FaCircleNotch/> : "Save"}</button>
         </form>
       </div>
