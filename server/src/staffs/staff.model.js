@@ -53,7 +53,7 @@ const staffSchema = new Schema({
   }
 }, {timestamps: true})
 
-// password encryption
+// Define pre middleware for save
 staffSchema.pre("save", async function(next) {
   if(!this.isModified("password")) return next()
 
@@ -61,6 +61,17 @@ staffSchema.pre("save", async function(next) {
   this.password = await bcrypt.hash(this.password, 16)
   next()
 })
+
+// Define pre middleware for findByIdAndUpdate
+staffSchema.pre('findOneAndUpdate', async function(next) {
+  if (this._update.password) {
+    const hashedPassword = await bcrypt.hash(this._update.password, 16);
+    this._update.password = hashedPassword;
+    next();
+  }
+  // If password is not provided in the update, move to the next middleware
+  return next();
+});
 
 // password comparison for login function
 staffSchema.methods.comparePwd = async function(pwd, pwdDB) {

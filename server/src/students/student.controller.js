@@ -32,9 +32,10 @@ const getOneStudent = async(req, res) => {
 const createStudent = async(req, res) => {
   try {
     const {
-      first_name, last_name, email, gender, date_of_birth, blood_group, medical_information, disabilities, guardian_name, relationship, guardian_email, guardian_phone_number, guardian_address, emergency_name, emergency_phone_number, emergency_address, password
+      first_name, last_name, email, gender, date_of_birth, blood_group, guardian_name, relationship, guardian_email, guardian_phone_number, guardian_address, emergency_name, emergency_phone_number, emergency_address, password
     } = req.body
-    if(!(first_name, last_name, email, gender, date_of_birth, blood_group, medical_information, disabilities, guardian_name, relationship, guardian_email, guardian_phone_number, guardian_address, emergency_name, emergency_phone_number, emergency_address, password)) {
+
+    if(!(first_name, last_name, email, gender, date_of_birth, blood_group, guardian_name, relationship, guardian_email, guardian_phone_number, guardian_address, emergency_name, emergency_phone_number, emergency_address, password)) {
       return res.status(400).send({message: "All fields are required"})
     }
     await studentService.createStudent(req.body).then(student =>

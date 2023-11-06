@@ -96,6 +96,17 @@ studentSchema.pre("save", async function(next) {
   next()
 })
 
+// Define pre middleware for findByIdAndUpdate
+studentSchema.pre('findOneAndUpdate', async function(next) {
+  if (this._update.password) {
+    const hashedPassword = await bcrypt.hash(this._update.password, 16);
+    this._update.password = hashedPassword;
+    next();
+  }
+  // If password is not provided in the update, move to the next middleware
+  return next();
+});
+
 // password comparison for login function
 studentSchema.methods.comparePwd = async function(pwd, pwdDB) {
   // compare the password for login
