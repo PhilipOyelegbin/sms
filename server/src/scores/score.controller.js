@@ -95,7 +95,7 @@ const updateScore = async(req, res) => {
     }
 
     // get all the score
-    let ReqValue = Object.values(req.body).map(value => value).splice(0, 3)
+    let ReqValue = Object.values(req.body).map(value => value).splice(1, 4)
 
     // calculate the average
     const getAvg = await grader.calculateTotalMarks(req.body)

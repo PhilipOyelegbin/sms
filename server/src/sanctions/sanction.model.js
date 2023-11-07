@@ -27,7 +27,7 @@ const sanctionSchema = new Schema({
     require: [true, "location of the incident score is required"],
   },
   witnesses: {
-    type: Array,
+    type: String,
   },
   penalties: {
     type: String,
