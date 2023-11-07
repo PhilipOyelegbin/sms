@@ -25,7 +25,7 @@ function UpdateSanction() {
     try {
       e.preventDefault()
       setIsLoading(true)
-      const result = await axios.post(`${import.meta.env.VITE_APP_SANCTION_API_URL}/${id}`, formData, {
+      const result = await axios.patch(`${import.meta.env.VITE_APP_SANCTION_API_URL}/${id}`, formData, {
         headers: {Authorization: `Bearer ${sessionStorage.getItem("token")}`}
       })
       setFormData({
